@@ -45,7 +45,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:12px 16px;
+  padding:18px 24px;
   margin-bottom:18px;
 }
 
@@ -53,23 +53,23 @@ body{
 .site-brand{
   display:inline-flex;
   align-items:center;
-  gap:18px;
+  gap:24px;
 }
 .site-brand .logo{
-  height:92px;
+  height:140px;
   width:auto;
   display:block;
   image-rendering:auto;
   object-fit:contain;
   padding:0;
-  border-radius:10px;
+  border-radius:12px;
   background:transparent;
 }
 .brand-name{
   font-weight:800;
-  letter-spacing:0.02em;
+  letter-spacing:0.01em;
   color:var(--green-bright);
-  font-size:1.6rem;
+  font-size:2.4rem;
 }
 
 /* Modal styles (centered, accessible) */
@@ -243,14 +243,14 @@ body.light .contact-btn.email{ color:#071007; background: linear-gradient(90deg,
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  height:44px;
-  width:44px;
+  height:56px;
+  width:56px;
   border-radius:999px;
   background:transparent;
   border:1px solid var(--border-dark);
   color:var(--text-dark);
   cursor:pointer;
-  padding:6px;
+  padding:8px;
   transition:transform .12s ease, background .12s ease, color .12s ease, border-color .12s ease;
 }
 .theme-toggle svg{display:block; color:var(--text-dark)}
@@ -581,9 +581,10 @@ input,textarea{ font-family:inherit }
 @media (max-width:720px){
   h1{font-size:32px}
   .main-card{padding:28px}
-  .site-header{padding:6px 8px}
-  .site-header .logo{height:56px}
-  .theme-toggle{height:36px; width:36px}
+  .site-header{padding:10px 12px}
+  .site-header .logo{height:92px}
+  .brand-name{font-size:2rem}
+  .theme-toggle{height:44px; width:44px}
   .hero-buttons{flex-direction:column; align-items:stretch}
   .hero-buttons .btn{width:100%}
   .hero-buttons .btn:first-child{order:0}
