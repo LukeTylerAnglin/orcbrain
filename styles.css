@@ -53,23 +53,23 @@ body{
 .site-brand{
   display:inline-flex;
   align-items:center;
-  gap:12px;
+  gap:16px;
 }
 .site-brand .logo{
-  height:56px;
+  height:76px;
   width:auto;
   display:block;
   image-rendering:auto;
   object-fit:contain;
   padding:0;
-  border-radius:8px;
+  border-radius:10px;
   background:transparent;
 }
 .brand-name{
   font-weight:800;
-  letter-spacing:0.04em;
+  letter-spacing:0.02em;
   color:var(--green-bright);
-  font-size:1.15rem;
+  font-size:1.4rem;
 }
 
 /* Modal styles (centered, accessible) */
@@ -582,7 +582,7 @@ input,textarea{ font-family:inherit }
   h1{font-size:32px}
   .main-card{padding:28px}
   .site-header{padding:6px 8px}
-  .site-header .logo{height:36px}
+  .site-header .logo{height:48px}
   .theme-toggle{height:34px; width:34px}
   .hero-buttons{flex-direction:column; align-items:stretch}
   .hero-buttons .btn{width:100%}
