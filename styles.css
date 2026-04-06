@@ -20,23 +20,20 @@
 html,body{height:100%}
 body{
   margin:0;
-  background:
-    radial-gradient(1200px 600px at 10% 10%, rgba(62,163,77,0.04), transparent 8%),
-    radial-gradient(900px 500px at 90% 80%, rgba(126,217,87,0.03), transparent 10%),
-    var(--bg-dark);
-  color:var(--text-dark);
+  color:#0f1410;
+  font-family:"Space Grotesk","Inter",system-ui,sans-serif;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  transition:background .22s ease,color .22s ease;
-  background-attachment:fixed;
-  -webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(63,163,77,.12), transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(63,163,77,.08), transparent 40%),
+    #eef3ef;
 }
 
 .page{
-  max-width:980px;
-  margin:32px auto;
-  padding:0 20px 60px;
-  display:block;
+  max-width:1100px;
+  margin:40px auto;
+  padding:0 24px 80px;
 }
 
 /* ---------- SITE HEADER (logo + theme toggle) ---------- */
@@ -44,32 +41,30 @@ body{
 .site-header{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  padding:18px 24px;
-  margin-bottom:18px;
+  justify-content:flex-start;
+  padding:10px 0 24px 0;
 }
 
 /* Site brand in header (logo + text) */
 .site-brand{
-  display:inline-flex;
+  display:flex;
   align-items:center;
-  gap:24px;
+  gap:18px;
 }
 .site-brand .logo{
-  height:140px;
-  width:auto;
-  display:block;
-  image-rendering:auto;
+  height:56px;
+  width:56px;
   object-fit:contain;
-  padding:0;
+  background:#ffffff;
+  padding:10px;
   border-radius:12px;
-  background:transparent;
+  box-shadow:0 6px 16px rgba(0,0,0,0.08);
 }
 .brand-name{
-  font-weight:800;
-  letter-spacing:0.01em;
-  color:var(--green-bright);
-  font-size:2.4rem;
+  font-weight:700;
+  letter-spacing:-0.01em;
+  color:#1d5e2a;
+  font-size:1.8rem;
 }
 
 /* Modal styles (centered, accessible) */
@@ -104,7 +99,34 @@ body{
   color:var(--text-dark);
   border-radius:6px;
 }
+
+/* Prominent close button when placed inside the dialog */
+.modal-close.modal-close-inside{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:32px;
+  height:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.06));
+  border:1px solid rgba(255,255,255,0.08);
+  color:var(--text-dark);
+  padding:0;
+  border-radius:10px;
+  font-weight:700;
+  font-size:18px;
+  line-height:1;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.modal-close.modal-close-inside:hover{ transform:translateY(-3px); opacity:0.98; }
+.modal-close.modal-close-inside:focus{ outline:3px solid rgba(62,163,77,0.18); outline-offset:3px; }
+
+/* Keep original generic focus style for other modal-close instances */
 .modal-close:focus{ outline:3px solid rgba(62,163,77,.12); outline-offset:3px; }
+
 
 /* Dialog surface */
 .modal-dialog .modal-form{
@@ -115,12 +137,6 @@ body{
   box-shadow: 0 18px 40px rgba(0,0,0,0.6);
 }
 
-/* When light theme is active */
-body.light .modal-dialog .modal-form{
-  background:var(--card-light);
-  border:1px solid var(--border-light);
-  box-shadow: 0 10px 30px rgba(16,24,20,0.06);
-}
 
 /* Prevent body scroll when modal open */
 body.modal-open{ overflow:hidden; }
@@ -160,24 +176,6 @@ body.modal-open{ overflow:hidden; }
 .modal-form .form-actions{ display:flex; align-items:center; gap:14px; margin-top:10px; }
 .modal-form .btn.primary{ min-width:0; padding:12px 22px; }
 
-/* Light mode form variants */
-body.light .modal-form label{ color: rgba(16,24,20,0.86); }
-body.light .modal-form input,
-body.light .modal-form textarea{
-  background:#ffffff;
-  border:1px solid var(--border-light);
-  color: var(--text-light);
-  box-shadow:none;
-}
-body.light .modal-form input::placeholder,
-body.light .modal-form textarea::placeholder{
-  color: rgba(16,24,20,0.45);
-}
-body.light .modal-form input:focus,
-body.light .modal-form textarea:focus{
-  border-color: rgba(62,163,77,0.5);
-  box-shadow: 0 0 0 3px rgba(62,163,77,0.18);
-}
 
 /* Quick contact option buttons inside modal */
 .contact-options{
@@ -223,16 +221,6 @@ body.light .modal-form textarea:focus{
 
 .contact-btn:hover{ transform:translateY(-3px); opacity:0.98; }
 
-/* Light mode variants */
-body.light .contact-btn{
-  color:var(--text-light);
-  border:1px solid var(--border-light);
-  box-shadow:none;
-  background:#ffffff;
-}
-body.light .contact-btn.call{ color:#071007; background: linear-gradient(90deg, rgba(126,217,87,1), rgba(62,163,77,1)); }
-body.light .contact-btn.text{ color:#241500; background: linear-gradient(90deg, rgba(255,215,64,1), rgba(255,180,30,1)); }
-body.light .contact-btn.email{ color:#071007; background: linear-gradient(90deg, rgba(100,150,250,1), rgba(60,110,240,1)); }
 
 /* Small visual tweak to hero spacing to keep header separate */
 .main-card{ padding-top:32px; }
@@ -260,18 +248,12 @@ body.light .contact-btn.email{ color:#071007; background: linear-gradient(90deg,
 /* ---------- MAIN CARD ---------- */
 
 .main-card{
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
-  border:1px solid rgba(126,217,87,0.06);
-  border-radius:20px;
-  padding:44px;
-  display:flex;
-  flex-direction:column;
-  gap:30px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.02);
-  transition:transform .18s ease, background .2s ease, border .2s ease, box-shadow .2s ease;
-  transform: translateZ(0);
+  background:#ffffff;
+  border-radius:24px;
+  padding:64px;
+  box-shadow:0 40px 120px rgba(0,0,0,0.12);
+  border:1px solid rgba(0,0,0,0.04);
 }
-.main-card:hover{ transform: translateY(-4px) scale(1.003); box-shadow: 0 28px 70px rgba(0,0,0,0.6); }
 
 /* ---------- HERO ---------- */
 
@@ -306,18 +288,19 @@ body.light .contact-btn.email{ color:#071007; background: linear-gradient(90deg,
 }
 
 h1{
-  font-size:44px;
-  line-height:1.02;
-  margin:0 0 14px;
-  letter-spacing:-0.02em;
+  font-size:54px;
+  line-height:1.05;
+  margin:0 0 20px;
+  letter-spacing:-0.035em;
+  font-weight:700;
 }
 
 .lede{
-  font-size:18px;
-  line-height:1.6;
-  opacity:.92;
-  margin-bottom:20px;
-  max-width:760px;
+  font-size:19px;
+  line-height:1.7;
+  color:#3f4d45;
+  margin-bottom:34px;
+  max-width:640px;
 }
 
 .subtle{
@@ -345,32 +328,25 @@ h1{
   outline:none;
 }
 
-/* Light-mode variants keep links low-contrast */
-body.light .subtle{ color: rgba(10,20,16,0.64); }
-body.light .subtle a{ color: rgba(10,20,16,0.62); }
 
 /* ---------- BUTTONS (hero CTAs) ---------- */
 
 /* Clean horizontal layout with a strong primary pill and compact secondary CTAs */
 .hero-buttons{
   display:flex;
-  gap:18px;
-  align-items:center;
-  justify-content:flex-start;
-  margin-top:18px;
-  flex-wrap:wrap;
+  gap:16px;
+  margin-bottom:24px;
 }
 
 /* Primary action grows and looks prominent */
 .hero-buttons .btn.primary{
-  min-width:320px;
-  padding:16px 36px;
+  padding:18px 36px;
   border-radius:999px;
   font-size:16px;
-  letter-spacing:0.02em;
-  background: linear-gradient(90deg, rgba(126,217,87,1), rgba(62,163,77,1));
-  color:#072006;
-  box-shadow: 0 18px 50px rgba(62,163,77,0.12);
+  font-weight:600;
+  background:linear-gradient(135deg,#1d5e2a,#3fa34d);
+  color:#ffffff;
+  box-shadow:0 18px 40px rgba(29,94,42,0.35);
 }
 
 /* Secondary CTAs (call/text) are smaller rounded chips */
@@ -400,13 +376,8 @@ body.light .subtle a{ color: rgba(10,20,16,0.62); }
 
 /* Accent hook for heading */
 .accent{
-  background:linear-gradient(90deg, rgba(126,217,87,1), rgba(61,160,74,1));
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  color:#1d5e2a;
   font-weight:800;
-  padding-right:6px;
-  letter-spacing:-0.01em;
 }
 
 /* Specialty cards: glassy, elevated, with neon accent */
@@ -418,8 +389,8 @@ body.light .subtle a{ color: rgba(10,20,16,0.62); }
   transition:transform .16s ease, box-shadow .18s ease, border-color .18s ease;
   box-shadow: 0 8px 30px rgba(0,0,0,0.45);
 }
-.specialty h3{ margin-top:0; margin-bottom:8px; font-size:18px; }
-.specialty p{ opacity:0.9; line-height:1.5; color:rgba(255,255,255,0.88); }
+.specialty h3{ margin-top:0; margin-bottom:8px; font-size:18px; color:#0f1410; }
+.specialty p{ opacity:0.9; line-height:1.5; color:#3f4d45; }
 
 .specialty:hover{
   transform:translateY(-8px) scale(1.01);
@@ -470,34 +441,35 @@ body.light .subtle a{ color: rgba(10,20,16,0.62); }
 
 .specialty-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+  margin-top:12px;
 }
 
 .specialty{
-  background:rgba(255,255,255,0.02);
-  border:1px solid var(--border-dark);
-  border-radius:14px;
-  padding:20px;
-  transition:background .18s ease,border .18s ease,transform .12s ease, box-shadow .12s ease;
-}
-.specialty:hover{transform:translateY(-6px); box-shadow: 0 6px 20px rgba(2,8,6,0.06)}
-
-body.light .specialty{
   background:#ffffff;
-  border:1px solid rgba(16,24,20,0.08);
-  /* thin dividers feel + soft shadow */
-  box-shadow: 0 1px 2px rgba(16,24,20,0.04), 0 0 0 1px rgba(16,24,20,0.02);
+  border-radius:18px;
+  padding:30px;
+  border:1px solid rgba(0,0,0,0.05);
+  transition:transform .18s ease, box-shadow .18s ease;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+  position:relative;
 }
-body.light .specialty p{
-  color: rgba(16,24,20,0.78);
+.specialty::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg,#3fa34d,#7ed957);
+  border-radius:18px 18px 0 0;
 }
-body.light .specialty:hover{
-  box-shadow: 0 6px 18px rgba(16,24,20,0.08), 0 0 0 1px rgba(16,24,20,0.02);
+.specialty:hover{
+  transform:translateY(-8px);
+  box-shadow:0 28px 60px rgba(0,0,0,0.12);
 }
-body.light .specialty-grid{
-  gap:22px;
-}
+
 
 /* ---------- BORING INDUSTRIES / ABOUT ---------- */
 
@@ -540,38 +512,17 @@ body.light .specialty-grid{
   object-fit:cover;
 }
 
-body.light .about-photo{
-  border:1px solid var(--border-light);
-  box-shadow:0 8px 24px rgba(16,24,20,0.06);
-}
 
 /* ---------- FOOTER ---------- */
 
 footer{
   text-align:center;
   font-size:14px;
-  opacity:.7;
-  margin-top:22px;
+  color:#5a6a61;
+  margin-top:60px;
+  opacity:.8;
 }
 
-/* ---------- LIGHT MODE (class toggled) ---------- */
-
-body.light{
-  background:var(--bg-light);
-  color:var(--text-light);
-}
-
-body.light .main-card{
-  background:var(--card-light);
-  border:1px solid var(--border-light);
-  /* simpler, cleaner surface in light mode */
-  box-shadow: 0 6px 18px rgba(16, 24, 20, 0.05);
-}
-
-body.light .theme-toggle{ color:var(--text-light); border:1px solid var(--border-light) }
-body.light .theme-toggle svg{ color:var(--text-light) }
-
-body.light .btn{ color:#071007; box-shadow: 0 8px 24px rgba(46,125,50,0.06) }
 
 /* Inputs / forms removed; kept styles in case added later */
 input,textarea{ font-family:inherit }
@@ -584,7 +535,6 @@ input,textarea{ font-family:inherit }
   .site-header{padding:10px 12px}
   .site-header .logo{height:92px}
   .brand-name{font-size:2rem}
-  .theme-toggle{height:44px; width:44px}
   .hero-buttons{flex-direction:column; align-items:stretch}
   .hero-buttons .btn{width:100%}
   .hero-buttons .btn:first-child{order:0}
@@ -595,5 +545,5 @@ input,textarea{ font-family:inherit }
 
 /* Minor print reset */
 @media print{
-  .theme-toggle, .hero-buttons, .site-header{display:none}
+  .hero-buttons, .site-header{display:none}
 }
