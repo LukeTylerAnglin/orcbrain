@@ -456,7 +456,7 @@ h1{
   left:0;
   right:0;
   height:4px;
-  background:linear-gradient(90deg, rgba(103,123,103,0.9), rgba(158,186,158,0.9));
+  background:linear-gradient(90deg, rgba(0,0,0,0.9), rgba(40,40,40,0.9));
   border-radius:18px 18px 0 0;
 }
 .specialty:hover{
