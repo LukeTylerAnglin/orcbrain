@@ -1,1155 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orc Brain | AI Automations for Real Businesses</title>
-    <meta name="description"
-        content="AI automations that actually save time and money for operational industries like vet clinics, insurance, HVAC, and property management.">
-    <link rel="icon" href="./assets/favicon.png" type="image/png">
-    <link rel="shortcut icon" href="./assets/favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="./assets/favicon.png">
-    <style>
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f7f7f7;
-            --bg-panel: #f0f0f0;
-            --text-primary: #111111;
-            --text-secondary: #555555;
-            --text-lines: #999999;
-            --color-link: #777777;
-            --max-width: 1100px;
-            --header-height: 64px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-weight: 400;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* ── Header ── */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            height: var(--header-height);
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-        }
-
-        .header-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            padding: 0 24px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 20px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        .logo img {
-            height: 36px;
-            width: 36px;
-            object-fit: contain;
-        }
-
-        /* ── Buttons ── */
-        .btn-primary {
-            display: inline-block;
-            background: var(--text-primary);
-            color: var(--bg-primary);
-            border: none;
-            padding: 14px 28px;
-            font-size: 15px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: opacity 0.2s;
-            font-family: inherit;
-            letter-spacing: -0.01em;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.8;
-        }
-
-        .btn-primary:focus-visible {
-            outline: 2px solid var(--text-primary);
-            outline-offset: 3px;
-        }
-
-        /* ── Hero ── */
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            padding-top: var(--header-height);
-        }
-
-        .hero-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 600;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-        }
-
-        .subheadline {
-            color: var(--text-secondary);
-            font-size: 18px;
-            line-height: 1.7;
-            margin-top: 24px;
-        }
-
-        .hero .btn-primary {
-            margin-top: 32px;
-        }
-
-        .contact-row {
-            display: flex;
-            gap: 40px;
-            margin-top: 28px;
-        }
-
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .contact-label {
-            font-size: 12px;
-            color: var(--text-lines);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .contact-value {
-            font-size: 15px;
-            color: var(--color-link);
-            transition: color 0.2s;
-        }
-
-        a.contact-value:hover {
-            color: var(--text-primary);
-        }
-
-        /* ── Hero Animation ── */
-        .hero-animation {
-            width: 100%;
-            overflow: visible;
-        }
-
-        .hero-animation svg {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        #brain-group {
-            transform-origin: 0 0;
-            transition: transform 0.15s ease-out;
-        }
-
-        #brain-group.pulse {
-            transform: scale(1.05);
-        }
-
-        #brain-glow {
-            transition: opacity 0.15s ease-out;
-        }
-
-        #brain-dashed-ring {
-            transform-origin: 0 0;
-            animation: rotate-slow 25s linear infinite;
-        }
-
-        @keyframes rotate-slow {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* ── Sections ── */
-        .section-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .section-inner h2 {
-            font-size: 32px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 48px;
-        }
-
-        .industries,
-        .examples,
-        .how-it-works {
-            padding: 80px 0;
-        }
-
-        .final-cta {
-            padding: 80px 0;
-        }
-
-        /* ── Industries ── */
-        .industries-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .industry-card {
-            background: var(--bg-panel);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            padding: 28px 24px;
-            transition: border-color 0.2s;
-        }
-
-        .industry-card:hover {
-            border-color: rgba(0, 0, 0, 0.15);
-        }
-
-        .industry-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .industry-example {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* ── What We Automate – Infinite Scroll ── */
-        .scroll-viewport {
-            overflow: hidden;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
-        }
-
-        .scroll-track {
-            display: flex;
-            gap: 16px;
-            width: max-content;
-            animation: marquee 40s linear infinite;
-        }
-
-        .scroll-track:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        .auto-card {
-            flex: 0 0 220px;
-            background: var(--bg-panel);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            padding: 28px 22px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 14px;
-            transition: border-color 0.2s;
-        }
-
-        .auto-card:hover {
-            border-color: rgba(0, 0, 0, 0.15);
-        }
-
-        .auto-card-icon {
-            width: 40px;
-            height: 40px;
-            flex-shrink: 0;
-        }
-
-        .auto-card-icon svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        .auto-card-title {
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 1.35;
-        }
-
-        /* ── How It Works ── */
-        .steps {
-            display: flex;
-            flex-direction: column;
-            gap: 36px;
-        }
-
-        .step {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-lines);
-            min-width: 28px;
-            padding-top: 2px;
-        }
-
-        .step-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .step-desc {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* ── Final CTA ── */
-        .final-cta .section-inner {
-            text-align: center;
-            background: var(--bg-panel);
-            padding: 64px 32px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        .final-cta h2 {
-            font-size: 32px;
-            margin-bottom: 32px;
-        }
-
-        .final-cta .btn-primary {
-            margin-bottom: 32px;
-        }
-
-        .contact-row-center {
-            justify-content: center;
-        }
-
-        /* ── Footer ── */
-        footer {
-            border-top: 1px solid rgba(0, 0, 0, 0.07);
-            padding: 40px 0;
-        }
-
-        .footer-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-brand {
-            font-size: 15px;
-            font-weight: 600;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 28px;
-        }
-
-        .footer-links a {
-            font-size: 14px;
-            color: var(--color-link);
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--text-primary);
-        }
-
-        /* ── Responsive ── */
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .subheadline {
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-inner {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .hero h1 {
-                font-size: 30px;
-            }
-
-            .subheadline {
-                font-size: 15px;
-                margin-top: 16px;
-            }
-
-            .hero .btn-primary {
-                margin-top: 24px;
-            }
-
-            .contact-row {
-                margin-top: 24px;
-                gap: 24px;
-            }
-
-            .industries-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-inner h2 {
-                font-size: 26px;
-                margin-bottom: 32px;
-            }
-
-            .industries,
-            .examples,
-            .how-it-works,
-            .final-cta {
-                padding: 48px 0;
-            }
-
-            .final-cta h2 {
-                font-size: 26px;
-            }
-
-            .btn-primary {
-                padding: 12px 24px;
-                font-size: 14px;
-                width: 100%;
-                text-align: center;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .auto-card {
-                flex: 0 0 180px;
-                padding: 22px 18px;
-            }
-
-            .auto-card-title {
-                font-size: 14px;
-            }
-
-            .auto-card-icon {
-                width: 34px;
-                height: 34px;
-            }
-
-            .scroll-track {
-                animation-duration: 30s;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            #brain-dashed-ring {
-                animation: none;
-            }
-
-            #brain-group,
-            #brain-glow {
-                transition: none;
-            }
-
-            .scroll-track {
-                animation: none;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OrcBrain | Profit Intelligence for Aesthetic Practices</title>
+  <meta name="description" content="Find which treatments your aesthetic practice should promote, reprice, or stop discounting using the reports you already have.">
+  <meta property="og:title" content="Find the treatments quietly costing your practice profit">
+  <meta property="og:description" content="A focused profit review for owner-led cosmetic dermatology and medical aesthetic practices.">
+  <link rel="icon" href="./assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="./styles.css">
 </head>
-
 <body>
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="OrcBrain home">
+      <img src="./assets/favicon.png" alt="" width="34" height="34">
+      <span>OrcBrain</span>
+    </a>
+    <a class="nav-cta" href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Book a 10-minute fit call</a>
+  </header>
 
-    <!-- Header -->
-    <header>
-        <div class="header-inner">
-            <div class="logo">
-                <img src="assets/favicon.png" alt="Orc Brain logo">
-                <span>Orc Brain</span>
-            </div>
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Profit intelligence for aesthetic practices</p>
+        <h1>Find the treatments quietly costing your practice profit.</h1>
+        <p class="lede">Your existing reports can tell you <strong>what to promote, reprice, or stop discounting.</strong> We turn them into decisions.</p>
+        <div class="actions">
+          <a class="button primary" href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Book a free 10-minute fit call <span>→</span></a>
+          <a class="button text" href="#example">See the output</a>
         </div>
-    </header>
+        <p class="micro">Remote. No software replacement.</p>
+      </div>
 
-    <main>
+      <div class="decision-card reveal" aria-label="Example profit recommendations">
+        <div class="card-top">
+          <div><span class="status-dot"></span> Example weekly brief</div>
+          <span>Last 90 days</span>
+        </div>
+        <div class="metric-row">
+          <div><small>Opportunity found</small><strong>$18.4k<span>/mo</span></strong></div>
+          <div class="trend">↑ 11.8%</div>
+        </div>
+        <div class="recommendations">
+          <article class="recommendation push">
+            <span class="tag">PUSH</span>
+            <div><strong>RF microneedling</strong><p>High contribution · unused room capacity</p></div>
+            <b>+$7.2k</b>
+          </article>
+          <article class="recommendation reprice">
+            <span class="tag">REPRICE</span>
+            <div><strong>Laser package</strong><p>Discount erodes consumable-adjusted margin</p></div>
+            <b>+$4.8k</b>
+          </article>
+          <article class="recommendation stop">
+            <span class="tag">STOP</span>
+            <div><strong>Tuesday filler promo</strong><p>Already saturated · shifts full-price demand</p></div>
+            <b>+$3.1k</b>
+          </article>
+        </div>
+        <p class="example-note">Illustrative example—not a promised result.</p>
+      </div>
+    </section>
 
-        <!-- Hero -->
-        <section class="hero">
-            <div class="hero-inner">
-                <div class="hero-content">
-                    <h1>Unglamorous automations that actually save time and money.</h1>
-                    <p class="subheadline">
-                        Most AI pilots fail because most AI engineers make things that look pretty and do cool things. We don't care about pretty or cool. We care about monetary and time savings
-                    </p>
-                    <a class="btn-primary" href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Book 10-Minute Consult</a>
-                    <div class="contact-row">
-                        <div class="contact-item">
-                            <span class="contact-label">Text or Call</span>
-                            <a href="tel:7575634749" class="contact-value">757-563-4749</a>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-label">Email</span>
-                            <a href="mailto:luke@orcbrain.com" class="contact-value">luke@orcbrain.com</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-animation">
-                    <svg id="anim-svg" viewBox="0 0 840 400" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <filter id="glow-sm" x="-50%" y="-50%" width="200%" height="200%">
-                                <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
-                                <feMerge>
-                                    <feMergeNode in="blur" />
-                                    <feMergeNode in="SourceGraphic" />
-                                </feMerge>
-                            </filter>
-                            <filter id="glow-lg" x="-100%" y="-100%" width="300%" height="300%">
-                                <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-                                <feMerge>
-                                    <feMergeNode in="blur" />
-                                    <feMergeNode in="SourceGraphic" />
-                                </feMerge>
-                            </filter>
-                            <radialGradient id="bg-grad" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#000000" stop-opacity="0.03" />
-                                <stop offset="100%" stop-color="#000000" stop-opacity="0" />
-                            </radialGradient>
+    <section class="problem">
+      <div class="shell narrow reveal">
+        <p class="eyebrow">The problem</p>
+        <h2>Your busiest treatment is not always your best treatment.</h2>
+        <p>Revenue reports show what sold. They rarely show what created the most profit after time, discounts, consumables, and capacity.</p>
+      </div>
+      <div class="shell pain-grid reveal">
+        <article><span>01</span><h3>Discounting full calendars</h3><p>Giving away margin on demand you already have.</p></article>
+        <article><span>02</span><h3>Idle capacity</h3><p>Profitable providers, rooms, or devices sitting unused.</p></article>
+        <article><span>03</span><h3>Misleading revenue</h3><p>High sales masking weak contribution after costs.</p></article>
+      </div>
+    </section>
 
-                            <!-- Reusable Icons for Hero Endpoints -->
-                            <symbol id="icon-email" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="4" y="8" width="32" height="24" rx="2" stroke="#000" stroke-width="2" />
-                                <polyline points="4,10 20,22 36,10" stroke="#000" stroke-width="2"
-                                    stroke-linejoin="round" />
-                            </symbol>
-                            <symbol id="icon-invoice" viewBox="0 0 40 40" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 4L10 36L26 36L32 30L32 4Z" stroke="#000" stroke-width="2"
-                                    stroke-linejoin="round" />
-                                <path d="M26 36L26 30L32 30" stroke="#000" stroke-width="2" stroke-linejoin="round" />
-                                <line x1="14" y1="12" x2="26" y2="12" stroke="#000" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                                <line x1="14" y1="17" x2="24" y2="17" stroke="#000" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                            </symbol>
-                            <symbol id="icon-form" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="6" y="4" width="28" height="32" rx="2" stroke="#000" stroke-width="2" />
-                                <line x1="12" y1="12" x2="28" y2="12" stroke="#000" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                                <line x1="12" y1="18" x2="24" y2="18" stroke="#000" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                                <line x1="12" y1="24" x2="26" y2="24" stroke="#000" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                            </symbol>
-                            <symbol id="icon-funnel" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8 6L32 6L26 16L30 28L12 28L16 16Z" stroke="#000" stroke-width="2"
-                                    stroke-linejoin="round" />
-                                <line x1="14" y1="28" x2="14" y2="36" stroke="#000" stroke-width="2"
-                                    stroke-linecap="round" />
-                                <line x1="22" y1="28" x2="22" y2="36" stroke="#000" stroke-width="2"
-                                    stroke-linecap="round" />
-                            </symbol>
-                            <symbol id="icon-question" viewBox="0 0 40 40" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="20" cy="18" r="12" stroke="#000" stroke-width="2" />
-                                <path d="M16 16 C16 13 18 12 20 12 C22 12 24 13 24 15 C24 17 22 18 20 19 L20 21"
-                                    stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                <circle cx="20" cy="25" r="1.5" fill="#000" />
-                            </symbol>
-                            <symbol id="icon-calendar" viewBox="0 0 40 40" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect x="5" y="8" width="30" height="28" rx="2" stroke="#000" stroke-width="2" />
-                                <line x1="5" y1="16" x2="35" y2="16" stroke="#000" stroke-width="2" />
-                                <line x1="12" y1="4" x2="12" y2="11" stroke="#000" stroke-width="2"
-                                    stroke-linecap="round" />
-                                <line x1="28" y1="4" x2="28" y2="11" stroke="#000" stroke-width="2"
-                                    stroke-linecap="round" />
-                            </symbol>
-                            <symbol id="icon-report" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="6" y="4" width="28" height="32" rx="2" stroke="#000" stroke-width="2" />
-                                <rect x="11" y="24" width="4" height="8" rx="1" fill="#000" opacity=".4" />
-                                <rect x="18" y="18" width="4" height="14" rx="1" fill="#000" opacity=".55" />
-                                <rect x="25" y="12" width="4" height="20" rx="1" fill="#000" opacity=".7" />
-                            </symbol>
-                            <symbol id="icon-check" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="10" cy="10" r="9" fill="#111111" />
-                                <path d="M6,10 L9,13.5 L14.5,7" stroke="#ffffff" stroke-width="2" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </symbol>
-                        </defs>
+    <section id="example" class="solution shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">What you get</p>
+        <h2>Decisions, not another dashboard.</h2>
+      </div>
+      <div class="steps reveal">
+        <article><span>1</span><div><h3>Connect the reports</h3><p>Booking, payments, marketing, and basic costs.</p></div></article>
+        <article><span>2</span><div><h3>Calculate contribution</h3><p>Margin, time, capacity, discounts, and repeat behavior.</p></div></article>
+        <article><span>3</span><div><h3>Act</h3><p>Push, reprice, bundle, reschedule, or stop.</p></div></article>
+      </div>
+    </section>
 
-                        <rect width="840" height="400" fill="url(#bg-grad)" />
+    <section class="input-section">
+      <div class="shell input-grid">
+        <div class="reveal">
+          <p class="eyebrow">Low-lift implementation</p>
+          <h2>Keep the systems you already use.</h2>
+          <p>Standard exports are enough for an initial review.</p>
+          <a class="inline-link" href="mailto:luke@orcbrain.com?subject=Aesthetic%20practice%20profit%20review">Ask about your platform →</a>
+        </div>
+        <div class="source-list reveal">
+          <div><span>Systems</span><b>Boulevard, Zenoti, PatientNow, Aesthetic Record, Mangomint, or CSV</b></div>
+          <div><span>Costs</span><b>Provider time, consumables, devices, and discounts</b></div>
+          <div><span>Your effort</span><b>One call and report access</b></div>
+        </div>
+      </div>
+    </section>
 
-                        <!-- Connection paths (faint) -->
-                        <g id="connection-paths" opacity="0.12" fill="none" stroke="#000000" stroke-width="0.5">
-                            <path id="ip-0" d="M108,48 C240,48 340,200 420,200" />
-                            <path id="ip-1" d="M88,112 C220,112 340,200 420,200" />
-                            <path id="ip-2" d="M98,176 C230,176 345,200 420,200" />
-                            <path id="ip-3" d="M88,240 C220,240 345,200 420,200" />
-                            <path id="ip-4" d="M98,304 C230,304 340,200 420,200" />
-                            <path id="ip-5" d="M108,352 C240,352 340,200 420,200" />
-                            <path id="op-0" d="M420,200 C500,200 590,68 710,68" />
-                            <path id="op-1" d="M420,200 C500,200 610,140 730,140" />
-                            <path id="op-2" d="M420,200 C505,200 600,210 720,210" />
-                            <path id="op-3" d="M420,200 C500,200 610,280 730,280" />
-                            <path id="op-4" d="M420,200 C500,200 590,348 710,348" />
-                        </g>
+    <section class="fit shell">
+      <div class="fit-card reveal">
+        <div>
+          <p class="eyebrow">Best fit</p>
+          <h2>Best for owner-led, multi-provider practices.</h2>
+        </div>
+        <ul>
+          <li>1–3 locations</li>
+          <li>Multiple providers or treatment rooms</li>
+          <li>Injectables plus device- or inventory-heavy services</li>
+          <li>An owner or operator who wants profit—not more reporting</li>
+        </ul>
+      </div>
+    </section>
 
-                        <!-- Input Icons (Always Visible) -->
-                        <g opacity="0.4">
-                            <use href="#icon-email" width="28" height="28" x="94" y="34" />
-                            <use href="#icon-invoice" width="28" height="28" x="74" y="98" />
-                            <use href="#icon-form" width="28" height="28" x="84" y="162" />
-                            <use href="#icon-funnel" width="28" height="28" x="74" y="226" />
-                            <use href="#icon-question" width="28" height="28" x="84" y="290" />
-                            <use href="#icon-calendar" width="28" height="28" x="94" y="338" />
-                        </g>
+    <section class="founder shell">
+      <div class="founder-inner reveal">
+        <p class="eyebrow">Why OrcBrain</p>
+        <blockquote>“I built automation and analytics systems at Tesla, EY, and Adobe. Now I’m applying that experience to one question: where is an aesthetic practice leaving profit on the table?”</blockquote>
+      </div>
+    </section>
 
-                        <!-- Output Icons + Checkmarks (Always Visible) -->
-                        <g>
-                            <use href="#icon-email" width="28" height="28" x="696" y="54" opacity="0.35" />
-                            <use href="#icon-check" width="16" height="16" x="708" y="48" />
+    <section class="faq shell">
+      <div class="section-head reveal"><p class="eyebrow">Questions</p><h2>Before you book</h2></div>
+      <div class="faq-list reveal">
+        <details><summary>Do we need to replace our software?</summary><p>No. The initial work uses your current systems and standard reports. This is an analysis and decision layer, not a practice-management replacement.</p></details>
+        <details><summary>Can this be done remotely?</summary><p>Yes. Access, analysis, review, and recommendations can all be handled remotely.</p></details>
+        <details><summary>What happens on the call?</summary><p>We check whether your service mix and reports make the analysis practical.</p></details>
+      </div>
+    </section>
 
-                            <use href="#icon-calendar" width="28" height="28" x="716" y="126" opacity="0.35" />
-                            <use href="#icon-check" width="16" height="16" x="728" y="120" />
+    <section class="final-cta">
+      <div class="shell reveal">
+        <p class="eyebrow">Start with fit—not a sales presentation</p>
+        <h2>Could your existing reports reveal a better treatment mix?</h2>
+        <p>Ten minutes is enough to find out.</p>
+        <div class="actions centered">
+          <a class="button primary light" href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Book the 10-minute call <span>→</span></a>
+          <a class="button email" href="mailto:luke@orcbrain.com">luke@orcbrain.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-                            <use href="#icon-invoice" width="28" height="28" x="706" y="196" opacity="0.35" />
-                            <use href="#icon-check" width="16" height="16" x="718" y="190" />
-
-                            <use href="#icon-funnel" width="28" height="28" x="716" y="266" opacity="0.35" />
-                            <use href="#icon-check" width="16" height="16" x="728" y="260" />
-
-                            <use href="#icon-report" width="28" height="28" x="696" y="334" opacity="0.35" />
-                            <use href="#icon-check" width="16" height="16" x="708" y="328" />
-                        </g>
-
-                        <!-- Brain symbol -->
-                        <g transform="translate(420,200)">
-                            <circle id="brain-glow" r="52" fill="none" stroke="#000000" stroke-width="1.5" opacity="0"
-                                filter="url(#glow-lg)" />
-                            <g id="brain-group">
-                                <circle r="48" fill="none" stroke="#000000" stroke-width="0.5" opacity="0.12" />
-                                <circle id="brain-dashed-ring" r="40" fill="none" stroke="#000000" stroke-width="1"
-                                    stroke-dasharray="5 3" opacity="0.2" />
-                                <circle r="30" fill="none" stroke="#000000" stroke-width="1.5" opacity="0.6" />
-                                <circle r="18" fill="#ffffff" stroke="#000000" stroke-width="1" opacity="0.7" />
-                                <circle r="3.5" fill="#000000" />
-                                <path d="M-30,-12 L-50,-12 L-50,-26 L-66,-26 L-66,-36" fill="none" stroke="#000000"
-                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" />
-                                <path d="M-30,0 L-54,0" fill="none" stroke="#000000" stroke-width="1.5"
-                                    stroke-linecap="round" opacity="0.6" />
-                                <path d="M-30,12 L-50,12 L-50,26 L-66,26 L-66,36" fill="none" stroke="#000000"
-                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" />
-                                <path d="M-50,-26 L-50,-36" fill="none" stroke="#000000" stroke-width="1"
-                                    stroke-linecap="round" opacity="0.35" />
-                                <path d="M-50,26 L-50,36" fill="none" stroke="#000000" stroke-width="1"
-                                    stroke-linecap="round" opacity="0.35" />
-                                <path d="M-42,-36 L-58,-36" fill="none" stroke="#000000" stroke-width="0.8"
-                                    stroke-linecap="round" opacity="0.3" />
-                                <path d="M-42,36 L-58,36" fill="none" stroke="#000000" stroke-width="0.8"
-                                    stroke-linecap="round" opacity="0.3" />
-                                <path d="M30,-12 L50,-12 L50,-26 L66,-26 L66,-36" fill="none" stroke="#000000"
-                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" />
-                                <path d="M30,0 L54,0" fill="none" stroke="#000000" stroke-width="1.5"
-                                    stroke-linecap="round" opacity="0.6" />
-                                <path d="M30,12 L50,12 L50,26 L66,26 L66,36" fill="none" stroke="#000000"
-                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" />
-                                <path d="M50,-26 L50,-36" fill="none" stroke="#000000" stroke-width="1"
-                                    stroke-linecap="round" opacity="0.35" />
-                                <path d="M50,26 L50,36" fill="none" stroke="#000000" stroke-width="1"
-                                    stroke-linecap="round" opacity="0.35" />
-                                <path d="M42,-36 L58,-36" fill="none" stroke="#000000" stroke-width="0.8"
-                                    stroke-linecap="round" opacity="0.3" />
-                                <path d="M42,36 L58,36" fill="none" stroke="#000000" stroke-width="0.8"
-                                    stroke-linecap="round" opacity="0.3" />
-                                <path d="M0,-30 L0,-44" fill="none" stroke="#000000" stroke-width="1"
-                                    stroke-linecap="round" opacity="0.3" />
-                                <path d="M0,30 L0,44" fill="none" stroke="#000000" stroke-width="1"
-                                    stroke-linecap="round" opacity="0.3" />
-                                <circle cx="-66" cy="-36" r="2.5" fill="#000000" opacity="0.4" />
-                                <circle cx="-50" cy="-36" r="1.8" fill="#000000" opacity="0.3" />
-                                <circle cx="-54" cy="0" r="2.5" fill="#000000" opacity="0.5" />
-                                <circle cx="-66" cy="36" r="2.5" fill="#000000" opacity="0.4" />
-                                <circle cx="-50" cy="36" r="1.8" fill="#000000" opacity="0.3" />
-                                <circle cx="66" cy="-36" r="2.5" fill="#000000" opacity="0.4" />
-                                <circle cx="50" cy="-36" r="1.8" fill="#000000" opacity="0.3" />
-                                <circle cx="54" cy="0" r="2.5" fill="#000000" opacity="0.5" />
-                                <circle cx="66" cy="36" r="2.5" fill="#000000" opacity="0.4" />
-                                <circle cx="50" cy="36" r="1.8" fill="#000000" opacity="0.3" />
-                                <circle cx="0" cy="-44" r="1.8" fill="#000000" opacity="0.3" />
-                                <circle cx="0" cy="44" r="1.8" fill="#000000" opacity="0.3" />
-                            </g>
-                        </g>
-
-                        <!-- Particles container -->
-                        <g id="particles-container"></g>
-                    </svg>
-                </div>
-            </div>
-        </section>
-
-        <!-- Industries -->
-        <section class="industries">
-            <div class="section-inner">
-                <h2>Industries we automate</h2>
-                <div class="industries-grid">
-                    <div class="industry-card">
-                        <div class="industry-title">Vet Clinics</div>
-                        <div class="industry-example">Example: appointment scheduling automation</div>
-                    </div>
-                    <div class="industry-card">
-                        <div class="industry-title">Medical Equipment</div>
-                        <div class="industry-example">Example: order processing automation</div>
-                    </div>
-                    <div class="industry-card">
-                        <div class="industry-title">Insurance</div>
-                        <div class="industry-example">Example: lead intake automation</div>
-                    </div>
-                    <div class="industry-card">
-                        <div class="industry-title">Property Management</div>
-                        <div class="industry-example">Example: tenant request automation</div>
-                    </div>
-                    <div class="industry-card">
-                        <div class="industry-title">HVAC</div>
-                        <div class="industry-example">Example: service scheduling automation</div>
-                    </div>
-                    <div class="industry-card">
-                        <div class="industry-title">Social Media Marketing</div>
-                        <div class="industry-example">Example: content pipeline automation</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- What We Automate -->
-        <section class="examples">
-            <div class="section-inner">
-                <h2>What we automate</h2>
-                <div class="scroll-viewport">
-                    <div class="scroll-track">
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="6" y="4" width="28" height="32" rx="2" stroke="#111" stroke-width="1.5" />
-                                    <line x1="12" y1="12" x2="28" y2="12" stroke="#999" stroke-width="1.2"
-                                        stroke-linecap="round" />
-                                    <line x1="12" y1="18" x2="24" y2="18" stroke="#999" stroke-width="1.2"
-                                        stroke-linecap="round" />
-                                    <line x1="12" y1="24" x2="26" y2="24" stroke="#999" stroke-width="1.2"
-                                        stroke-linecap="round" />
-                                    <rect x="11" y="29" width="10" height="4" rx="1" stroke="#111" stroke-width="1" />
-                                </svg></div>
-                            <div class="auto-card-title">Intake Forms</div>
-                        </div>
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="5" y="8" width="30" height="28" rx="2" stroke="#111" stroke-width="1.5" />
-                                    <line x1="5" y1="16" x2="35" y2="16" stroke="#111" stroke-width="1.5" />
-                                    <line x1="12" y1="4" x2="12" y2="11" stroke="#111" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                    <line x1="28" y1="4" x2="28" y2="11" stroke="#111" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                    <rect x="10" y="20" width="4" height="4" rx=".5" fill="#111" opacity=".5" />
-                                    <rect x="18" y="20" width="4" height="4" rx=".5" fill="#111" opacity=".5" />
-                                    <rect x="26" y="20" width="4" height="4" rx=".5" fill="#111" opacity=".5" />
-                                    <rect x="10" y="28" width="4" height="4" rx=".5" fill="#111" opacity=".5" />
-                                    <rect x="18" y="28" width="4" height="4" rx=".5" fill="#111" opacity=".5" />
-                                </svg></div>
-                            <div class="auto-card-title">Appointment Scheduling</div>
-                        </div>
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="4" y="8" width="32" height="24" rx="2" stroke="#111" stroke-width="1.5" />
-                                    <polyline points="4,10 20,22 36,10" stroke="#111" stroke-width="1.5"
-                                        stroke-linejoin="round" />
-                                    <line x1="14" y1="20" x2="6" y2="30" stroke="#999" stroke-width="1"
-                                        stroke-linecap="round" />
-                                    <line x1="26" y1="20" x2="34" y2="30" stroke="#999" stroke-width="1"
-                                        stroke-linecap="round" />
-                                </svg></div>
-                            <div class="auto-card-title">Email Responses</div>
-                        </div>
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 4L10 36L26 36L32 30L32 4Z" stroke="#111" stroke-width="1.5"
-                                        stroke-linejoin="round" />
-                                    <path d="M26 36L26 30L32 30" stroke="#111" stroke-width="1.5"
-                                        stroke-linejoin="round" />
-                                    <line x1="14" y1="12" x2="26" y2="12" stroke="#999" stroke-width="1.2"
-                                        stroke-linecap="round" />
-                                    <line x1="14" y1="17" x2="24" y2="17" stroke="#999" stroke-width="1.2"
-                                        stroke-linecap="round" />
-                                    <line x1="14" y1="22" x2="22" y2="22" stroke="#999" stroke-width="1.2"
-                                        stroke-linecap="round" />
-                                </svg></div>
-                            <div class="auto-card-title">Invoice Processing</div>
-                        </div>
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 6L32 6L26 16L30 28L12 28L16 16Z" stroke="#111" stroke-width="1.5"
-                                        stroke-linejoin="round" />
-                                    <line x1="14" y1="28" x2="14" y2="36" stroke="#111" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                    <line x1="22" y1="28" x2="22" y2="36" stroke="#111" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                </svg></div>
-                            <div class="auto-card-title">Lead Qualification</div>
-                        </div>
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="6" y="4" width="28" height="32" rx="2" stroke="#111" stroke-width="1.5" />
-                                    <rect x="11" y="24" width="4" height="8" rx=".5" fill="#111" opacity=".3" />
-                                    <rect x="18" y="18" width="4" height="14" rx=".5" fill="#111" opacity=".45" />
-                                    <rect x="25" y="12" width="4" height="20" rx=".5" fill="#111" opacity=".6" />
-                                </svg></div>
-                            <div class="auto-card-title">Reporting Pipelines</div>
-                        </div>
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="20" cy="14" r="5" stroke="#111" stroke-width="1.5" />
-                                    <path d="M10 34C10 27 14 23 20 23 26 23 30 27 30 34" stroke="#111"
-                                        stroke-width="1.5" stroke-linecap="round" />
-                                    <circle cx="30" cy="16" r="3" stroke="#999" stroke-width="1.2" />
-                                    <path d="M24 24C26 22 28 22 30 23 32 24 33 26 33 28" stroke="#999"
-                                        stroke-width="1.2" stroke-linecap="round" />
-                                </svg></div>
-                            <div class="auto-card-title">CRM Updates</div>
-                        </div>
-
-                        <!-- Duplicate set for seamless loop -->
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="6" y="4" width="28" height="32" rx="2" stroke="#111" stroke-width="1.5" />
-                                    <line x1="12" y1="12" x2="28" y2="12" stroke="#999" stroke-width="1.2"
-                                        stroke-linecap="round" />
-                                    <line x1="12" y1="18" x2="24" y2="18" stroke="#999" stroke-width="1.2"
-                                        stroke-linecap="round" />
-                                    <line x1="12" y1="24" x2="26" y2="24" stroke="#999" stroke-width="1.2"
-                                        stroke-linecap="round" />
-                                    <rect x="11" y="29" width="10" height="4" rx="1" stroke="#111" stroke-width="1" />
-                                </svg></div>
-                            <div class="auto-card-title">Intake Forms</div>
-                        </div>
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="5" y="8" width="30" height="28" rx="2" stroke="#111" stroke-width="1.5" />
-                                    <line x1="5" y1="16" x2="35" y2="16" stroke="#111" stroke-width="1.5" />
-                                    <line x1="12" y1="4" x2="12" y2="11" stroke="#111" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                    <line x1="28" y1="4" x2="28" y2="11" stroke="#111" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                    <rect x="10" y="20" width="4" height="4" rx=".5" fill="#111" opacity=".5" />
-                                    <rect x="18" y="20" width="4" height="4" rx=".5" fill="#111" opacity=".5" />
-                                    <rect x="26" y="20" width="4" height="4" rx=".5" fill="#111" opacity=".5" />
-                                    <rect x="10" y="28" width="4" height="4" rx=".5" fill="#111" opacity=".5" />
-                                    <rect x="18" y="28" width="4" height="4" rx=".5" fill="#111" opacity=".5" />
-                                </svg></div>
-                            <div class="auto-card-title">Appointment Scheduling</div>
-                        </div>
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="4" y="8" width="32" height="24" rx="2" stroke="#111" stroke-width="1.5" />
-                                    <polyline points="4,10 20,22 36,10" stroke="#111" stroke-width="1.5"
-                                        stroke-linejoin="round" />
-                                    <line x1="14" y1="20" x2="6" y2="30" stroke="#999" stroke-width="1"
-                                        stroke-linecap="round" />
-                                    <line x1="26" y1="20" x2="34" y2="30" stroke="#999" stroke-width="1"
-                                        stroke-linecap="round" />
-                                </svg></div>
-                            <div class="auto-card-title">Email Responses</div>
-                        </div>
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 4L10 36L26 36L32 30L32 4Z" stroke="#111" stroke-width="1.5"
-                                        stroke-linejoin="round" />
-                                    <path d="M26 36L26 30L32 30" stroke="#111" stroke-width="1.5"
-                                        stroke-linejoin="round" />
-                                    <line x1="14" y1="12" x2="26" y2="12" stroke="#999" stroke-width="1.2"
-                                        stroke-linecap="round" />
-                                    <line x1="14" y1="17" x2="24" y2="17" stroke="#999" stroke-width="1.2"
-                                        stroke-linecap="round" />
-                                    <line x1="14" y1="22" x2="22" y2="22" stroke="#999" stroke-width="1.2"
-                                        stroke-linecap="round" />
-                                </svg></div>
-                            <div class="auto-card-title">Invoice Processing</div>
-                        </div>
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 6L32 6L26 16L30 28L12 28L16 16Z" stroke="#111" stroke-width="1.5"
-                                        stroke-linejoin="round" />
-                                    <line x1="14" y1="28" x2="14" y2="36" stroke="#111" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                    <line x1="22" y1="28" x2="22" y2="36" stroke="#111" stroke-width="1.5"
-                                        stroke-linecap="round" />
-                                </svg></div>
-                            <div class="auto-card-title">Lead Qualification</div>
-                        </div>
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="6" y="4" width="28" height="32" rx="2" stroke="#111" stroke-width="1.5" />
-                                    <rect x="11" y="24" width="4" height="8" rx=".5" fill="#111" opacity=".3" />
-                                    <rect x="18" y="18" width="4" height="14" rx=".5" fill="#111" opacity=".45" />
-                                    <rect x="25" y="12" width="4" height="20" rx=".5" fill="#111" opacity=".6" />
-                                </svg></div>
-                            <div class="auto-card-title">Reporting Pipelines</div>
-                        </div>
-                        <div class="auto-card">
-                            <div class="auto-card-icon"><svg viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="20" cy="14" r="5" stroke="#111" stroke-width="1.5" />
-                                    <path d="M10 34C10 27 14 23 20 23 26 23 30 27 30 34" stroke="#111"
-                                        stroke-width="1.5" stroke-linecap="round" />
-                                    <circle cx="30" cy="16" r="3" stroke="#999" stroke-width="1.2" />
-                                    <path d="M24 24C26 22 28 22 30 23 32 24 33 26 33 28" stroke="#999"
-                                        stroke-width="1.2" stroke-linecap="round" />
-                                </svg></div>
-                            <div class="auto-card-title">CRM Updates</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- How It Works -->
-        <section class="how-it-works">
-            <div class="section-inner">
-                <h2>How it works</h2>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">01</div>
-                        <div class="step-content">
-                            <div class="step-title">10-minute consult</div>
-                            <div class="step-desc">We identify the biggest operational bottleneck.</div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">02</div>
-                        <div class="step-content">
-                            <div class="step-title">Automation design</div>
-                            <div class="step-desc">We design a targeted automation that removes manual work.</div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">03</div>
-                        <div class="step-content">
-                            <div class="step-title">Time and money saved</div>
-                            <div class="step-desc">Your team spends less time on repetitive tasks.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final CTA -->
-        <section class="final-cta">
-            <div class="section-inner">
-                <h2>Ready to eliminate unglamorous operational work?</h2>
-                <a class="btn-primary" href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Book 10-Minute Consult</a>
-                <div class="contact-row contact-row-center">
-                    <div class="contact-item">
-                        <span class="contact-label">Text / Call</span>
-                        <a href="tel:7575634749" class="contact-value">757-563-4749</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">Email</span>
-                        <a href="mailto:luke@orcbrain.com" class="contact-value">luke@orcbrain.com</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-
-    <script>
-        (function () {
-            var CALENDLY_URL = 'https://calendly.com/luke-orcbrain/10-minute-consult';
-
-            function openCal(e) {
-                if (e) e.preventDefault();
-                if (window.Calendly) { Calendly.initPopupWidget({ url: CALENDLY_URL }); return; }
-                var s = document.createElement('script');
-                s.src = 'https://assets.calendly.com/assets/external/widget.js';
-                s.onload = function () { Calendly.initPopupWidget({ url: CALENDLY_URL }); };
-                document.head.appendChild(s);
-            }
-
-            document.querySelectorAll('[data-calendly]').forEach(function (el) {
-                el.addEventListener('click', openCal);
-            });
-
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-            var INPUT_IDS = ['ip-0', 'ip-1', 'ip-2', 'ip-3', 'ip-4', 'ip-5'];
-            var OUTPUT_IDS = ['op-0', 'op-1', 'op-2', 'op-3', 'op-4'];
-            var INPUT_TRAVEL = 1400;
-            var OUTPUT_TRAVEL = 900;
-            var INTERVAL = 1500;
-            var PAUSE = 200;
-            var NS = 'http://www.w3.org/2000/svg';
-            var isMobile = window.innerWidth < 768;
-            var MAX_P = isMobile ? 8 : 20, MAX_C = Math.floor(MAX_P / 2);
-            var iPaths = [], oPaths = [], pCon, bGroup, bGlow;
-            var cycles = [], lt = 0, sa = 0, running = false;
-
-            function mkP() {
-                var c = document.createElementNS(NS, 'circle');
-                c.setAttribute('r', '2.5');
-                c.setAttribute('fill', '#000000');
-                c.setAttribute('filter', 'url(#glow-sm)');
-                pCon.appendChild(c);
-                return c;
-            }
-
-            function rmP(el) { if (el && el.parentNode) el.parentNode.removeChild(el); }
-
-            function mvP(c, path, p) {
-                var l = path.getTotalLength();
-                if (l <= 0) return;
-                p = Math.max(0, Math.min(1, p));
-                var pt = path.getPointAtLength(p * l);
-                c.setAttribute('cx', pt.x);
-                c.setAttribute('cy', pt.y);
-            }
-
-            function pulse() {
-                bGroup.classList.add('pulse');
-                bGlow.setAttribute('opacity', '0.2');
-                setTimeout(function () { bGroup.classList.remove('pulse'); bGlow.setAttribute('opacity', '0'); }, 160);
-            }
-
-            function spawn() {
-                if (cycles.length >= MAX_C) return;
-                var ii = Math.floor(Math.random() * INPUT_IDS.length);
-                var oi = Math.floor(Math.random() * OUTPUT_IDS.length);
-                var ip = mkP(); mvP(ip, iPaths[ii], 0);
-                cycles.push({ ph: 'input', el: 0, ii: ii, oi: oi, ip: ip, op: null });
-            }
-
-            function updateC(c, dt) {
-                c.el += dt;
-                if (c.ph === 'input') {
-                    var p = c.el / INPUT_TRAVEL; mvP(c.ip, iPaths[c.ii], p);
-                    if (p >= 1) { rmP(c.ip); pulse(); c.ph = 'pause'; c.el = 0; }
-                } else if (c.ph === 'pause') {
-                    if (c.el >= PAUSE) {
-                        c.ph = 'output'; c.el = 0; c.op = mkP(); mvP(c.op, oPaths[c.oi], 0);
-                    }
-                } else if (c.ph === 'output') {
-                    var p = c.el / OUTPUT_TRAVEL; mvP(c.op, oPaths[c.oi], p);
-                    if (p >= 1) { rmP(c.op); return true; }
-                }
-                return false;
-            }
-
-            function anim(ts) {
-                if (!running) return;
-                if (lt === 0) lt = ts;
-                var dt = Math.min(ts - lt, 50); lt = ts;
-                sa += dt;
-                if (sa >= INTERVAL) { sa -= INTERVAL; spawn(); }
-                for (var i = cycles.length - 1; i >= 0; i--) { if (updateC(cycles[i], dt)) cycles.splice(i, 1); }
-                requestAnimationFrame(anim);
-            }
-
-            function onVis() { if (document.hidden) { running = false; lt = 0; } else { running = true; requestAnimationFrame(anim); } }
-
-            function initHero() {
-                for (var i = 0; i < INPUT_IDS.length; i++) { var p = document.getElementById(INPUT_IDS[i]); if (p) iPaths.push(p); }
-                for (var i = 0; i < OUTPUT_IDS.length; i++) { var p = document.getElementById(OUTPUT_IDS[i]); if (p) oPaths.push(p); }
-                if (!iPaths.length || !oPaths.length) return;
-                pCon = document.getElementById('particles-container');
-                bGroup = document.getElementById('brain-group');
-                bGlow = document.getElementById('brain-glow');
-                if (!pCon || !bGroup || !bGlow) return;
-                running = true; spawn(); requestAnimationFrame(anim);
-                document.addEventListener('visibilitychange', onVis);
-            }
-
-            initHero();
-        })();
-    </script>
-
+  <footer><span>© <span id="year"></span> OrcBrain</span><span>Profit intelligence for aesthetic practices</span></footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
 </body>
-
 </html>
