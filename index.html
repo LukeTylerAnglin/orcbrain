@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./styles.css">
   <style>
     [hidden] { display: none !important; }
-    .orc-output-trigger { appearance: none; border: 0; background: transparent; color: inherit; cursor: pointer; font-family: inherit; }
+    .orc-output-trigger { appearance: none; cursor: pointer; font-family: inherit; }
     .orc-output-modal { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; padding: 24px; background: rgba(5,5,5,.76); backdrop-filter: blur(12px); opacity: 0; transition: opacity .22s ease; }
     .orc-output-modal.is-open { opacity: 1; }
     .orc-output-panel { position: relative; width: min(1040px, 100%); overflow: hidden; border: 1px solid #3b3b3b; background: #111; color: #f4f4f4; box-shadow: 0 30px 100px rgba(0,0,0,.45); transform: translateY(14px) scale(.985); transition: transform .28s ease; }
@@ -100,20 +100,20 @@
       <img src="./assets/favicon.png" alt="" width="34" height="34">
       <span>OrcBrain</span>
     </a>
-    <a class="nav-cta" href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Book a 10-minute fit call</a>
+    <a class="nav-cta" href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Check my reports</a>
   </header>
 
   <main id="top">
     <section class="hero shell">
       <div class="hero-copy reveal">
-        <p class="eyebrow">Profit intelligence for aesthetic practices</p>
-        <h1>Find the treatments quietly costing your practice profit.</h1>
-        <p class="lede">Your existing reports can tell you <strong>what to promote, reprice, or stop discounting.</strong> We turn them into decisions.</p>
+        <p class="eyebrow">For owner-led cosmetic dermatology practices</p>
+        <h1>Your highest-revenue treatment may be quietly costing you profit.</h1>
+        <p class="lede">OrcBrain reviews booking, payment, discount, capacity, and basic cost reports to identify <strong>what to push, reprice, or stop.</strong></p>
         <div class="actions">
-          <a class="button primary" href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Book a free 10-minute fit call <span>→</span></a>
-          <button class="button text orc-output-trigger" id="orc-output-trigger" type="button">See the output</button>
+          <button class="button primary orc-output-trigger" data-output-trigger type="button">Watch the 8-second output <span>→</span></button>
+          <a class="button text" href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Check whether my reports work</a>
         </div>
-        <p class="micro">Remote. No software replacement.</p>
+        <p class="micro">Free report-fit check · Remote · No software replacement</p>
       </div>
 
       <div class="decision-card reveal" aria-label="Example profit recommendations">
@@ -148,41 +148,51 @@
 
     <section class="problem">
       <div class="shell narrow reveal">
-        <p class="eyebrow">The problem</p>
-        <h2>Your busiest treatment is not always your best treatment.</h2>
-        <p>Revenue reports show what sold. They rarely show what created the most profit after time, discounts, consumables, and capacity.</p>
+        <p class="eyebrow">The hidden leak</p>
+        <h2>Revenue reports show what sold. They rarely show what created profit.</h2>
+        <p>Three decisions can quietly distort the economics of an otherwise busy aesthetic practice.</p>
       </div>
       <div class="shell pain-grid reveal">
-        <article><span>01</span><h3>Discounting full calendars</h3><p>Giving away margin on demand you already have.</p></article>
-        <article><span>02</span><h3>Idle capacity</h3><p>Profitable providers, rooms, or devices sitting unused.</p></article>
-        <article><span>03</span><h3>Misleading revenue</h3><p>High sales masking weak contribution after costs.</p></article>
+        <article><span>01</span><h3>Discounting a full calendar</h3><p>A promotion shifts full-price demand without creating meaningful new volume.</p></article>
+        <article><span>02</span><h3>Promoting the saturated service</h3><p>Ads push an already-full provider while a high-contribution room or device sits open.</p></article>
+        <article><span>03</span><h3>Trusting top-line revenue</h3><p>A “top seller” weakens after consumables, provider time, discounts, and refunds.</p></article>
+      </div>
+      <div class="shell pain-loop reveal">
+        <span>Which one is hiding in your reports?</span>
+        <button class="inline-link inline-button" data-output-trigger type="button">Watch the example →</button>
       </div>
     </section>
 
     <section id="example" class="solution shell">
       <div class="section-head reveal">
-        <p class="eyebrow">What you get</p>
-        <h2>Decisions, not another dashboard.</h2>
+        <p class="eyebrow">The 30-day Aesthetic Profit Review</p>
+        <h2>Five decisions, backed by your own numbers.</h2>
       </div>
       <div class="steps reveal">
-        <article><span>1</span><div><h3>Connect the reports</h3><p>Booking, payments, marketing, and basic costs.</p></div></article>
-        <article><span>2</span><div><h3>Calculate contribution</h3><p>Margin, time, capacity, discounts, and repeat behavior.</p></div></article>
-        <article><span>3</span><div><h3>Act</h3><p>Push, reprice, bundle, reschedule, or stop.</p></div></article>
+        <article><span>1</span><div><h3>Establish the baseline</h3><p>Reconcile bookings, payments, discounts, and basic costs for one location.</p></div></article>
+        <article><span>2</span><div><h3>Rank five opportunities</h3><p>Push, reprice, stop, bundle, or reschedule—each with modeled upside and confidence.</p></div></article>
+        <article><span>3</span><div><h3>Review the owner brief</h3><p>A concise, source-linked decision document your team can challenge and act on.</p></div></article>
+      </div>
+      <div class="offer-bar reveal">
+        <div><span>Founding pilot</span><strong>$1,500–$3,000</strong></div>
+        <div><span>Scope</span><strong>One location</strong></div>
+        <div><span>Timeline</span><strong>30 days</strong></div>
+        <a href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Check fit →</a>
       </div>
     </section>
 
     <section class="input-section">
       <div class="shell input-grid">
         <div class="reveal">
-          <p class="eyebrow">Low-lift implementation</p>
-          <h2>Keep the systems you already use.</h2>
-          <p>Standard exports are enough for an initial review.</p>
-          <a class="inline-link" href="mailto:luke@orcbrain.com?subject=Aesthetic%20practice%20profit%20review">Ask about your platform →</a>
+          <p class="eyebrow">Fit before fee</p>
+          <h2>We confirm your reports work before you pay.</h2>
+          <p>Share a sample export or screen-share the reports. If the available fields cannot support the agreed analysis, we do not start or charge you.</p>
+          <a class="inline-link" href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Check my reports →</a>
         </div>
         <div class="source-list reveal">
-          <div><span>Systems</span><b>Boulevard, Zenoti, PatientNow, Aesthetic Record, Mangomint, or CSV</b></div>
-          <div><span>Costs</span><b>Provider time, consumables, devices, and discounts</b></div>
-          <div><span>Your effort</span><b>One call and report access</b></div>
+          <div><span>Likely inputs</span><b>CSV or XLSX exports from your booking and payment systems</b></div>
+          <div><span>Useful fields</span><b>Service, date, provider or resource, price, discount, refund, and basic costs</b></div>
+          <div><span>Not required</span><b>Replacing software, installing an app, or an on-site visit</b></div>
         </div>
       </div>
     </section>
@@ -212,19 +222,20 @@
     <section class="faq shell">
       <div class="section-head reveal"><p class="eyebrow">Questions</p><h2>Before you book</h2></div>
       <div class="faq-list reveal">
-        <details><summary>Do we need to replace our software?</summary><p>No. The initial work uses your current systems and standard reports. This is an analysis and decision layer, not a practice-management replacement.</p></details>
+        <details><summary>Is this another software platform?</summary><p>No. The initial offer is a managed analysis of reports you already have, followed by a concise owner decision brief.</p></details>
+        <details><summary>What exactly do we receive?</summary><p>A source-linked baseline, five prioritized decisions, modeled upside, confidence levels, and an owner review.</p></details>
+        <details><summary>What is the guarantee?</summary><p>We verify report fit before charging. If you provide the agreed reports and we cannot deliver the agreed review within 30 days, the pilot fee is refunded.</p></details>
         <details><summary>Can this be done remotely?</summary><p>Yes. Access, analysis, review, and recommendations can all be handled remotely.</p></details>
-        <details><summary>What happens on the call?</summary><p>We check whether your service mix and reports make the analysis practical.</p></details>
       </div>
     </section>
 
     <section class="final-cta">
       <div class="shell reveal">
-        <p class="eyebrow">Start with fit—not a sales presentation</p>
-        <h2>Could your existing reports reveal a better treatment mix?</h2>
-        <p>Ten minutes is enough to find out.</p>
+        <p class="eyebrow">Free report-fit check</p>
+        <h2>Your reports may already contain the next profitable decision.</h2>
+        <p>Ten minutes is enough to see whether they can support a useful review.</p>
         <div class="actions centered">
-          <a class="button primary light" href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Book the 10-minute call <span>→</span></a>
+          <a class="button primary light" href="https://calendly.com/luke-orcbrain/10-minute-consult" target="_blank" rel="noopener">Check my reports <span>→</span></a>
           <a class="button email" href="mailto:luke@orcbrain.com">luke@orcbrain.com</a>
         </div>
       </div>
@@ -267,7 +278,7 @@
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
     const outputModal = document.getElementById('orc-output-modal');
-    const outputTrigger = document.getElementById('orc-output-trigger');
+    const outputTriggers = document.querySelectorAll('[data-output-trigger]');
     const outputClose = document.getElementById('orc-output-close');
     const outputReplay = document.getElementById('orc-output-replay');
     let outputPreviousFocus = null;
@@ -295,7 +306,7 @@
         if (outputPreviousFocus) outputPreviousFocus.focus();
       }, 220);
     };
-    outputTrigger.addEventListener('click', openOutput);
+    outputTriggers.forEach((trigger) => trigger.addEventListener('click', openOutput));
     outputClose.addEventListener('click', closeOutput);
     outputReplay.addEventListener('click', playOutput);
     outputModal.addEventListener('click', (event) => { if (event.target === outputModal) closeOutput(); });
