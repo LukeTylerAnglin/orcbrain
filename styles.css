@@ -100,15 +100,15 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.04;
   letter-spacing: -.04em;
 }
-.comparison-card { margin-top: 50px; border-top: 1px solid #cfcfcf; }
-.comparison-labels { display: grid; grid-template-columns: 1fr 1fr; gap: 84px; padding: 13px 22px; color: #777; font-size: 9px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
-.comparison-labels span:last-child { padding-left: 24px; }
-.comparison-row { display: grid; grid-template-columns: 1fr 44px 1fr; align-items: center; min-height: 138px; border-top: 1px solid #d7d7d7; background: white; }
-.comparison-row > div { padding: 24px 28px; }
-.comparison-row > div:last-child { border-left: 1px solid #e1e1e1; }
-.comparison-row b { font-size: 17px; }
-.comparison-row p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
-.comparison-row small { display: inline-block; margin-top: 11px; padding: 4px 7px; background: #ededed; color: #444; font-size: 9px; font-weight: 700; }
+.comparison-card { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 46px; }
+.decision-change { display: grid; grid-template-columns: 1fr; align-content: start; overflow: hidden; border: 1px solid #d7d7d7; background: white; }
+.decision-topic { padding: 12px 18px; border-bottom: 1px solid #dedede; color: #666; font-size: 9px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+.comparison-side { display: grid; gap: 7px; min-height: 118px; padding: 19px; }
+.comparison-side small { color: #777; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.comparison-side b { font-size: 16px; line-height: 1.35; }
+.comparison-side em { align-self: end; color: #bdbdbd; font-size: 10px; font-style: normal; font-weight: 700; }
+.clinic-side { color: #555; }
+.orc-side { min-height: 146px; background: #202020; color: white; }
 .comparison-arrow { color: #777; font-family: Georgia, serif; font-size: 24px; text-align: center; }
 
 .offer-section { display: grid; grid-template-columns: 1.05fr .95fr; align-items: stretch; gap: 64px; padding: 110px 0; }
@@ -219,12 +219,9 @@ footer { width: min(var(--max), calc(100% - 44px)); margin: auto; padding: 26px 
   .fit-card { padding: 0; border: 0; }
   .founder blockquote { font-size: 23px; }
   .comparison-section { padding: 72px 0; }
-  .comparison-labels { display: none; }
+  .comparison-card { grid-template-columns: 1fr; }
   .comparison-card { margin-top: 35px; }
-  .comparison-row { grid-template-columns: 1fr; }
-  .comparison-row > div { padding: 21px; }
-  .comparison-row > div:last-child { border-left: 0; border-top: 1px solid #e1e1e1; }
-  .comparison-arrow { padding: 2px 0; transform: rotate(90deg); }
+  .comparison-arrow { padding: 2px 0; }
   .offer-section { padding: 72px 0; }
   .offer-facts { grid-template-columns: 1fr; }
   .guarantee-card { padding: 29px 23px; }
