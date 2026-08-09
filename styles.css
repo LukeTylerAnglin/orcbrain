@@ -66,8 +66,6 @@ a { color: inherit; text-decoration: none; }
 .button.primary { padding: 15px 20px; background: var(--dark); color: white; transition: opacity .2s; }
 .button.primary:hover { opacity: .82; }
 .button.text, .button.email { border-bottom: 1px solid; padding: 7px 0; }
-.hero-guarantee { max-width: 590px; margin: 22px 0 0; padding: 12px 14px; border-left: 3px solid var(--ink); background: var(--soft); color: #555; font-size: 12px; }
-.hero-guarantee strong { color: var(--ink); }
 .micro { margin: 15px 0 0; color: #888888; font-size: 12px; }
 
 .decision-card {
@@ -93,6 +91,12 @@ a { color: inherit; text-decoration: none; }
 .recommendation p { margin: 2px 0 0; color: #aaaaaa; font-size: 10px; }
 .recommendation b { color: #dddddd; font-size: 12px; }
 .example-note { margin: 12px 0 0; color: #888888; font-size: 9px; text-align: right; }
+
+.guarantee-band { padding: 70px 0; background: var(--dark); color: white; }
+.guarantee-inner { display: grid; grid-template-columns: 1.35fr .65fr; align-items: end; gap: 90px; }
+.guarantee-inner .eyebrow { color: #aaa; }
+.guarantee-inner h2 { max-width: 790px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(38px, 4.2vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -.04em; }
+.guarantee-inner > p { margin: 0; color: #bbb; font-size: 14px; }
 
 .example-section { padding: 105px 0; background: var(--soft); }
 .example-head { max-width: 820px; text-align: center; }
@@ -129,18 +133,13 @@ a { color: inherit; text-decoration: none; }
 .inline-example { margin-top: 27px; padding: 0 0 5px; border: 0; border-bottom: 1px solid #777; background: transparent; color: white; cursor: pointer; font: 700 12px Arial, sans-serif; }
 .example-disclaimer { margin-top: 13px; color: #888; font-size: 10px; text-align: right; }
 
-.offer-section { display: grid; grid-template-columns: 1.05fr .95fr; align-items: stretch; gap: 64px; padding: 110px 0; }
+.offer-section { padding: 110px 0; }
+.offer-copy { max-width: 900px; }
 .offer-copy > p:not(.eyebrow) { max-width: 610px; margin: 22px 0 0; color: var(--muted); font-size: 16px; }
 .offer-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 38px; background: var(--line); border: 1px solid var(--line); }
 .offer-facts div { display: grid; gap: 4px; padding: 17px; background: white; }
 .offer-facts span { color: #777; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .offer-facts strong { font-size: 14px; }
-.guarantee-card { display: flex; flex-direction: column; justify-content: center; padding: 39px; background: var(--dark); color: white; }
-.guarantee-card .eyebrow { color: #aaa; }
-.guarantee-card h3 { margin: 0; font-family: Georgia, serif; font-size: 34px; font-weight: 400; line-height: 1.08; }
-.guarantee-card > p:not(.eyebrow) { margin: 18px 0 0; color: #bbb; font-size: 13px; }
-.guarantee-card .button { align-self: flex-start; margin-top: 24px; background: #f2f2f2; color: var(--ink); }
-.guarantee-card > small { margin-top: 12px; color: #858585; font-size: 9px; }
 
 .problem, .input-section { padding: 100px 0; background: var(--soft); }
 .narrow { max-width: 790px; text-align: center; }
@@ -214,7 +213,7 @@ footer { width: min(var(--max), calc(100% - 44px)); margin: auto; padding: 26px 
 .reveal.visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 @media (max-width: 850px) {
-  .hero, .input-grid, .fit-card, .offer-section, .faq, .mix-example { grid-template-columns: 1fr; gap: 45px; }
+  .hero, .input-grid, .fit-card, .faq, .mix-example, .guarantee-inner { grid-template-columns: 1fr; gap: 45px; }
   .hero { min-height: 0; }
   .pain-grid, .steps { grid-template-columns: 1fr; }
   .offer-bar { grid-template-columns: repeat(3, 1fr); }
@@ -237,6 +236,8 @@ footer { width: min(var(--max), calc(100% - 44px)); margin: auto; padding: 26px 
   .fit-card { padding: 0; border: 0; }
   .founder blockquote { font-size: 23px; }
   .example-section { padding: 72px 0; }
+  .guarantee-band { padding: 62px 0; }
+  .guarantee-inner { gap: 22px; }
   .mix-example { gap: 14px; margin-top: 35px; }
   .mix-row { grid-template-columns: 1fr 1fr; }
   .mix-row > strong { grid-column: 1 / -1; padding-bottom: 5px; }
@@ -248,6 +249,5 @@ footer { width: min(var(--max), calc(100% - 44px)); margin: auto; padding: 26px 
   .mix-total > strong { padding-bottom: 10px; }
   .offer-section { padding: 72px 0; }
   .offer-facts { grid-template-columns: 1fr; }
-  .guarantee-card { padding: 29px 23px; }
   footer { flex-direction: column; gap: 4px; }
 }
