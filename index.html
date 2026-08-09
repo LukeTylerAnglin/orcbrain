@@ -8,7 +8,7 @@
   <meta property="og:title" content="Find a more profitable treatment mix">
   <meta property="og:description" content="See which treatments to promote, price differently, or schedule differently—with the modeled financial impact.">
   <link rel="icon" href="./assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="./styles.css?v=20260809-4">
+  <link rel="stylesheet" href="./styles.css?v=20260809-5">
   <style>
     [hidden] { display: none !important; }
     .orc-output-trigger { appearance: none; cursor: pointer; font-family: inherit; }
@@ -150,60 +150,56 @@
 
     <section class="guarantee-band">
       <div class="shell guarantee-inner reveal">
-        <div>
-          <p class="eyebrow">The pilot guarantee</p>
-          <h2>Three useful profit recommendations in 30 days—or your $1,500 back.</h2>
-        </div>
-        <p>We inspect a sample export before you pay. If we accept the pilot and cannot deliver three source-backed recommendations with modeled financial impact, we refund your pilot payment in full.</p>
+        <p class="eyebrow">The pilot guarantee</p>
+        <h2>Three useful profit recommendations in 30 days—or your money back.</h2>
       </div>
     </section>
 
     <section id="example" class="example-section">
       <div class="shell example-head reveal">
-        <p class="eyebrow">Illustrative one-location example</p>
-        <h2>Same 100 monthly visits. $6,500 more.</h2>
-        <p>OrcBrain compares profit after treatment-level costs with real demand and usable provider, room, and device capacity.</p>
+        <p class="eyebrow">Interactive illustrative example</p>
+        <h2>Change the schedule. See the hypothetical profit.</h2>
+        <p>Adjust visit volume, treatment mix, and discounting to see how the same clinic economics can produce a different monthly result.</p>
       </div>
-      <div class="shell mix-example reveal">
-        <div class="mix-table">
-          <div class="mix-row mix-labels"><span>Treatment</span><span>Current month</span><span>Recommended mix</span></div>
-          <div class="mix-row"><strong>Filler promotion</strong><span>40 × $300 = <b>$12,000</b></span><span>25 × $340 = <b>$8,500</b></span></div>
-          <div class="mix-row"><strong>Laser package</strong><span>35 × $450 = <b>$15,750</b></span><span>35 × $500 = <b>$17,500</b></span></div>
-          <div class="mix-row"><strong>RF microneedling</strong><span>25 × $550 = <b>$13,750</b></span><span>40 × $550 = <b>$22,000</b></span></div>
-          <div class="mix-row mix-total"><strong>After treatment-level costs</strong><span>$41,500</span><span>$48,000 <b>+$6,500</b></span></div>
+      <div class="shell profit-calculator reveal">
+        <div class="calculator-controls">
+          <div class="slider-control">
+            <label for="visits-range"><span>Completed visits per month</span><output id="visits-value">100</output></label>
+            <input id="visits-range" type="range" min="80" max="130" step="1" value="100">
+            <div class="range-ends"><span>80</span><span>130</span></div>
+          </div>
+          <div class="slider-control">
+            <label for="mix-range"><span>Visits moved from filler promo to RF</span><output id="mix-value">15</output></label>
+            <input id="mix-range" type="range" min="0" max="25" step="1" value="15">
+            <div class="range-ends"><span>No shift</span><span>25 visits</span></div>
+          </div>
+          <div class="slider-control">
+            <label for="discount-range"><span>Average discount reduced</span><output id="discount-value">$40</output></label>
+            <input id="discount-range" type="range" min="0" max="75" step="5" value="40">
+            <div class="range-ends"><span>$0</span><span>$75</span></div>
+          </div>
+          <p>Illustrative assumptions: profit after treatment-level costs is $300 per filler visit, $450 per laser visit, and $550 per RF visit.</p>
         </div>
-        <aside class="finding-card">
-          <p class="eyebrow">How we find it</p>
-          <ol>
-            <li><b>Measure realized economics.</b><span>Payments, discounts, refunds, consumables, and variable compensation by treatment.</span></li>
-            <li><b>Map demand and capacity.</b><span>Bookings, completion, lead time, and open provider, room, or device hours.</span></li>
-            <li><b>Model the change.</b><span>Rank practical mix, pricing, and scheduling moves by estimated profit impact.</span></li>
-          </ol>
-          <button class="inline-example orc-output-trigger" data-output-trigger type="button">Watch the reports become decisions <span>→</span></button>
-        </aside>
-      </div>
-      <p class="shell example-disclaimer">Illustrative arithmetic, not a forecast. Your recommendations use your clinic’s data and operating constraints.</p>
-    </section>
-
-    <section id="offer" class="offer-section shell">
-      <div class="offer-copy reveal">
-        <p class="eyebrow">The 30-day Aesthetic Profit Review</p>
-        <h2>Your numbers. Three decisions. One clear plan.</h2>
-        <p>For one location, we analyze up to 90 days of treatment, payment, discount, cost, and capacity data. You receive three ranked actions, the math behind them, and an owner-ready implementation plan.</p>
-        <div class="offer-facts">
-          <div><span>Founding pilot</span><strong>$1,500 fixed</strong></div>
-          <div><span>Timeline</span><strong>30 days</strong></div>
-          <div><span>Your systems</span><strong>Stay in place</strong></div>
+        <div class="calculator-result" aria-live="polite">
+          <p class="eyebrow">Hypothetical monthly result</p>
+          <div class="result-total"><strong id="profit-value">$47,650</strong><span>after treatment-level costs</span></div>
+          <div class="result-delta" id="profit-delta">+$6,150 vs. the current mix at this volume</div>
+          <div class="result-mix">
+            <div><span>Filler</span><i><b id="filler-bar"></b></i><output id="filler-value">25 visits</output></div>
+            <div><span>Laser</span><i><b id="laser-bar"></b></i><output id="laser-value">35 visits</output></div>
+            <div><span>RF</span><i><b id="rf-bar"></b></i><output id="rf-value">40 visits</output></div>
+          </div>
+          <button class="inline-example orc-output-trigger" data-output-trigger type="button">Watch how we find the opportunity <span>→</span></button>
         </div>
       </div>
+      <p class="shell example-disclaimer">Illustrative calculator—not a forecast or promised result. A real review uses the clinic’s actual data and operating constraints.</p>
     </section>
 
     <section class="faq shell">
-      <div class="section-head reveal"><p class="eyebrow">Three questions</p><h2>Before the review</h2></div>
+      <div class="section-head reveal"><p class="eyebrow">Two questions</p><h2>Before the review</h2></div>
       <div class="faq-list reveal">
         <details><summary>What do you need from us?</summary><p>Nothing before the first call. If there is a fit, we use a screen-share or exports covering bookings, payments, discounts, refunds, provider or resource, and basic treatment costs.</p></details>
         <details><summary>Is this new software for the team?</summary><p>No. It is a remote, managed analysis of exports from the systems you already use.</p></details>
-        <details><summary>Does the guarantee promise more profit?</summary><p>No. It guarantees at least three source-backed recommendations with modeled financial impact. Actual results depend on execution and market conditions.</p></details>
       </div>
     </section>
 
@@ -243,6 +239,40 @@
       entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    const visitsRange = document.getElementById('visits-range');
+    const mixRange = document.getElementById('mix-range');
+    const discountRange = document.getElementById('discount-range');
+    const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+
+    const updateCalculator = () => {
+      const totalVisits = Number(visitsRange.value);
+      const laserVisits = Math.round(totalVisits * 0.35);
+      const fillerBase = Math.round(totalVisits * 0.40);
+      const rfBase = totalVisits - laserVisits - fillerBase;
+      const shiftedVisits = Math.min(Number(mixRange.value), fillerBase);
+      const discountReduction = Number(discountRange.value);
+      const fillerVisits = fillerBase - shiftedVisits;
+      const rfVisits = rfBase + shiftedVisits;
+      const currentProfit = (fillerBase * 300) + (laserVisits * 450) + (rfBase * 550);
+      const modeledProfit = (fillerVisits * (300 + discountReduction)) + (laserVisits * (450 + discountReduction)) + (rfVisits * 550);
+      const difference = modeledProfit - currentProfit;
+
+      document.getElementById('visits-value').textContent = totalVisits;
+      document.getElementById('mix-value').textContent = shiftedVisits;
+      document.getElementById('discount-value').textContent = money.format(discountReduction);
+      document.getElementById('profit-value').textContent = money.format(modeledProfit);
+      document.getElementById('profit-delta').textContent = `${difference >= 0 ? '+' : ''}${money.format(difference)} vs. the current mix at this volume`;
+      document.getElementById('filler-value').textContent = `${fillerVisits} visits`;
+      document.getElementById('laser-value').textContent = `${laserVisits} visits`;
+      document.getElementById('rf-value').textContent = `${rfVisits} visits`;
+      document.getElementById('filler-bar').style.width = `${(fillerVisits / totalVisits) * 100}%`;
+      document.getElementById('laser-bar').style.width = `${(laserVisits / totalVisits) * 100}%`;
+      document.getElementById('rf-bar').style.width = `${(rfVisits / totalVisits) * 100}%`;
+    };
+
+    [visitsRange, mixRange, discountRange].forEach((range) => range.addEventListener('input', updateCalculator));
+    updateCalculator();
 
     const outputModal = document.getElementById('orc-output-modal');
     const outputTriggers = document.querySelectorAll('[data-output-trigger]');
