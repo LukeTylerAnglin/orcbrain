@@ -66,6 +66,8 @@ a { color: inherit; text-decoration: none; }
 .button.primary { padding: 15px 20px; background: var(--dark); color: white; transition: opacity .2s; }
 .button.primary:hover { opacity: .82; }
 .button.text, .button.email { border-bottom: 1px solid; padding: 7px 0; }
+.hero-guarantee { max-width: 590px; margin: 22px 0 0; padding: 12px 14px; border-left: 3px solid var(--ink); background: var(--soft); color: #555; font-size: 12px; }
+.hero-guarantee strong { color: var(--ink); }
 .micro { margin: 15px 0 0; color: #888888; font-size: 12px; }
 
 .decision-card {
@@ -77,11 +79,13 @@ a { color: inherit; text-decoration: none; }
 }
 .card-top { display: flex; justify-content: space-between; color: #aaaaaa; font-size: 11px; }
 .status-dot { display: inline-block; width: 6px; height: 6px; margin-right: 7px; border-radius: 50%; background: #bdbdbd; }
-.metric-row { display: flex; align-items: end; justify-content: space-between; margin: 28px 0 22px; }
-.metric-row small { display: block; margin-bottom: 3px; color: #aaaaaa; }
-.metric-row strong { font-family: Georgia, serif; font-size: 37px; font-weight: 400; }
-.metric-row strong span { margin-left: 3px; color: #aaaaaa; font: 12px Arial, sans-serif; }
-.trend { padding: 5px 8px; border: 1px solid #5d5d5d; color: #dddddd; font-size: 11px; }
+.mix-lift { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 18px; margin: 25px 0 4px; }
+.mix-lift > div { display: grid; gap: 2px; }
+.mix-lift small { color: #999; font-size: 10px; }
+.mix-lift strong { font-family: Georgia, serif; font-size: 31px; font-weight: 400; }
+.mix-lift > span { padding-bottom: 5px; color: #777; font-size: 22px; }
+.lift-callout { margin: 0 0 20px; color: #aaa; font-size: 11px; }
+.lift-callout strong { color: white; font-size: 14px; }
 .recommendations { display: grid; gap: 1px; background: #454545; }
 .recommendation { display: grid; grid-template-columns: 76px 1fr auto; align-items: center; gap: 13px; padding: 14px; background: #2d2d2d; }
 .recommendation .tag { color: #c7c7c7; font-size: 9px; font-weight: 700; letter-spacing: .08em; }
