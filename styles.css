@@ -83,12 +83,46 @@ a { color: inherit; text-decoration: none; }
 .metric-row strong span { margin-left: 3px; color: #aaaaaa; font: 12px Arial, sans-serif; }
 .trend { padding: 5px 8px; border: 1px solid #5d5d5d; color: #dddddd; font-size: 11px; }
 .recommendations { display: grid; gap: 1px; background: #454545; }
-.recommendation { display: grid; grid-template-columns: 62px 1fr auto; align-items: center; gap: 13px; padding: 14px; background: #2d2d2d; }
+.recommendation { display: grid; grid-template-columns: 76px 1fr auto; align-items: center; gap: 13px; padding: 14px; background: #2d2d2d; }
 .recommendation .tag { color: #c7c7c7; font-size: 9px; font-weight: 700; letter-spacing: .08em; }
 .recommendation strong { font-size: 13px; }
 .recommendation p { margin: 2px 0 0; color: #aaaaaa; font-size: 10px; }
 .recommendation b { color: #dddddd; font-size: 12px; }
 .example-note { margin: 12px 0 0; color: #888888; font-size: 9px; text-align: right; }
+
+.comparison-section { padding: 105px 0; background: var(--soft); }
+.comparison-head { max-width: 790px; text-align: center; }
+.comparison-head h2, .offer-copy h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(39px, 4vw, 56px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -.04em;
+}
+.comparison-card { margin-top: 50px; border-top: 1px solid #cfcfcf; }
+.comparison-labels { display: grid; grid-template-columns: 1fr 1fr; gap: 84px; padding: 13px 22px; color: #777; font-size: 9px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+.comparison-labels span:last-child { padding-left: 24px; }
+.comparison-row { display: grid; grid-template-columns: 1fr 44px 1fr; align-items: center; min-height: 138px; border-top: 1px solid #d7d7d7; background: white; }
+.comparison-row > div { padding: 24px 28px; }
+.comparison-row > div:last-child { border-left: 1px solid #e1e1e1; }
+.comparison-row b { font-size: 17px; }
+.comparison-row p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+.comparison-row small { display: inline-block; margin-top: 11px; padding: 4px 7px; background: #ededed; color: #444; font-size: 9px; font-weight: 700; }
+.comparison-arrow { color: #777; font-family: Georgia, serif; font-size: 24px; text-align: center; }
+
+.offer-section { display: grid; grid-template-columns: 1.05fr .95fr; align-items: stretch; gap: 64px; padding: 110px 0; }
+.offer-copy > p:not(.eyebrow) { max-width: 610px; margin: 22px 0 0; color: var(--muted); font-size: 16px; }
+.offer-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 38px; background: var(--line); border: 1px solid var(--line); }
+.offer-facts div { display: grid; gap: 4px; padding: 17px; background: white; }
+.offer-facts span { color: #777; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.offer-facts strong { font-size: 14px; }
+.guarantee-card { display: flex; flex-direction: column; justify-content: center; padding: 39px; background: var(--dark); color: white; }
+.guarantee-card .eyebrow { color: #aaa; }
+.guarantee-card h3 { margin: 0; font-family: Georgia, serif; font-size: 34px; font-weight: 400; line-height: 1.08; }
+.guarantee-card > p:not(.eyebrow) { margin: 18px 0 0; color: #bbb; font-size: 13px; }
+.guarantee-card .button { align-self: flex-start; margin-top: 24px; background: #f2f2f2; color: var(--ink); }
+.guarantee-card > small { margin-top: 12px; color: #858585; font-size: 9px; }
 
 .problem, .input-section { padding: 100px 0; background: var(--soft); }
 .narrow { max-width: 790px; text-align: center; }
@@ -162,7 +196,7 @@ footer { width: min(var(--max), calc(100% - 44px)); margin: auto; padding: 26px 
 .reveal.visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 @media (max-width: 850px) {
-  .hero, .input-grid, .fit-card, .faq { grid-template-columns: 1fr; gap: 45px; }
+  .hero, .input-grid, .fit-card, .offer-section, .faq { grid-template-columns: 1fr; gap: 45px; }
   .hero { min-height: 0; }
   .pain-grid, .steps { grid-template-columns: 1fr; }
   .offer-bar { grid-template-columns: repeat(3, 1fr); }
@@ -175,7 +209,7 @@ footer { width: min(var(--max), calc(100% - 44px)); margin: auto; padding: 26px 
   .hero { padding: 52px 0 68px; }
   .hero h1 { font-size: 46px; }
   .lede { font-size: 17px; }
-  .recommendation { grid-template-columns: 54px 1fr; }
+  .recommendation { grid-template-columns: 67px 1fr; }
   .recommendation b { display: none; }
   .problem, .solution, .input-section, .fit, .faq, .final-cta { padding: 72px 0; }
   .pain-loop { flex-direction: column; gap: 5px; text-align: center; }
@@ -184,5 +218,15 @@ footer { width: min(var(--max), calc(100% - 44px)); margin: auto; padding: 26px 
   .source-list div { grid-template-columns: 1fr; gap: 5px; }
   .fit-card { padding: 0; border: 0; }
   .founder blockquote { font-size: 23px; }
+  .comparison-section { padding: 72px 0; }
+  .comparison-labels { display: none; }
+  .comparison-card { margin-top: 35px; }
+  .comparison-row { grid-template-columns: 1fr; }
+  .comparison-row > div { padding: 21px; }
+  .comparison-row > div:last-child { border-left: 0; border-top: 1px solid #e1e1e1; }
+  .comparison-arrow { padding: 2px 0; transform: rotate(90deg); }
+  .offer-section { padding: 72px 0; }
+  .offer-facts { grid-template-columns: 1fr; }
+  .guarantee-card { padding: 29px 23px; }
   footer { flex-direction: column; gap: 4px; }
 }
