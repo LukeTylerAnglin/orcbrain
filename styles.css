@@ -9,6 +9,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+::selection { background: var(--ink); color: var(--paper); }
 body {
   margin: 0;
   overflow-x: hidden;
@@ -19,6 +20,7 @@ body {
 }
 h1, h2, p, dl, dd { margin: 0; }
 a { color: inherit; text-decoration: none; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 .shell { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
 
 .site-header {
@@ -38,17 +40,20 @@ a { color: inherit; text-decoration: none; }
 
 .hero { min-height: 660px; padding: 64px 0 76px; }
 .pilot-notice {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-  width: max-content;
+  gap: 12px;
   max-width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--ink);
+  padding: 4px 0 8px;
+  border-bottom: 1px solid var(--ink);
   font-size: 12px;
+  transition: gap .16s ease, opacity .16s ease;
 }
+.pilot-notice:hover { gap: 16px; opacity: .72; }
+.pilot-notice i { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
 .pilot-notice strong { text-transform: uppercase; letter-spacing: .08em; }
 .pilot-notice span { color: var(--muted); }
+.pilot-notice b { margin-left: 6px; font-size: 12px; }
 .hero-grid { display: grid; grid-template-columns: 1.08fr .72fr; gap: 100px; align-items: end; margin-top: 72px; }
 .hero h1 {
   max-width: 760px;
@@ -58,6 +63,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -.025em;
   line-height: .92;
 }
+.hero h1 em { font-weight: 400; }
 .hero-copy > p { max-width: 500px; font-size: clamp(20px, 1.8vw, 24px); letter-spacing: -.025em; line-height: 1.42; }
 .button {
   display: inline-flex;
@@ -83,8 +89,9 @@ a { color: inherit; text-decoration: none; }
   grid-template-columns: 1fr 1fr;
   gap: 96px;
   padding: 68px;
-  border: 1px solid var(--line);
-  background: #d8cdbb;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
 }
 .offer h2, .faq h2 {
   font-family: var(--display);
@@ -92,10 +99,10 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -.025em;
 }
 .offer h2 { margin-top: 22px; font-size: clamp(58px, 6.3vw, 84px); line-height: .92; }
-.offer-intro > p:last-child { max-width: 520px; margin-top: 28px; color: var(--muted); font-size: 15px; line-height: 1.6; }
-.offer-terms { align-self: end; border-top: 1px solid var(--ink); }
-.offer-terms div { display: grid; grid-template-columns: .7fr 1.3fr; gap: 24px; align-items: center; min-height: 86px; border-bottom: 1px solid var(--line); }
-.offer-terms dt { color: var(--muted); font-size: 12px; font-weight: 720; text-transform: uppercase; letter-spacing: .07em; }
+.offer-intro > p:last-child { max-width: 520px; margin-top: 28px; color: #d5cab7; font-size: 15px; line-height: 1.6; }
+.offer-terms { align-self: end; border-top: 1px solid var(--paper); }
+.offer-terms div { display: grid; grid-template-columns: .7fr 1.3fr; gap: 24px; align-items: center; min-height: 86px; border-bottom: 1px solid rgba(232, 223, 207, .34); }
+.offer-terms dt { color: #d5cab7; font-size: 12px; font-weight: 720; text-transform: uppercase; letter-spacing: .07em; }
 .offer-terms dd { font-family: var(--display); font-size: 25px; line-height: 1.1; }
 
 .faq { display: grid; grid-template-columns: .58fr 1.42fr; gap: 90px; padding: 104px 0 110px; }
@@ -113,7 +120,9 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(18px, 1.7vw, 22px);
   font-weight: 650;
   letter-spacing: -.015em;
+  transition: padding-left .16s ease;
 }
+.faq-list summary:hover { padding-left: 8px; }
 .faq-list summary::-webkit-details-marker { display: none; }
 .faq-list summary span { position: relative; width: 28px; height: 28px; border: 1px solid var(--line); background: var(--panel); }
 .faq-list summary span::before, .faq-list summary span::after {
@@ -147,9 +156,14 @@ a { color: inherit; text-decoration: none; }
   .brand img { width: 25px; height: 25px; }
   .header-link { gap: 8px; font-size: 12px; }
   .hero { padding-top: 40px; }
-  .pilot-notice { align-items: flex-start; flex-direction: column; gap: 5px; width: 100%; font-size: 12px; line-height: 1.4; }
+  .pilot-notice { display: grid; grid-template-columns: 10px 1fr auto; gap: 5px 8px; width: 100%; font-size: 12px; line-height: 1.4; }
+  .pilot-notice i { grid-row: 1; align-self: center; }
+  .pilot-notice strong { grid-column: 2; }
+  .pilot-notice span { grid-column: 2 / -1; }
+  .pilot-notice b { grid-column: 3; grid-row: 1; margin-left: 0; }
   .hero-grid { margin-top: 44px; }
   .hero h1 { font-size: clamp(58px, 16vw, 68px); letter-spacing: -.015em; line-height: .94; }
+  .hero h1 em { font-size: .94em; }
   .hero-copy > p { font-size: 19px; }
   .button { width: 100%; }
   .offer { width: 100%; gap: 40px; padding: 48px 20px; border-right: 0; border-left: 0; }
