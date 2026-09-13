@@ -1,191 +1,833 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="OrcBrain installs a lead-handling system for owner-led businesses.">
-  <title>OrcBrain — Every inquiry has a next step</title>
-  <link rel="icon" href="./assets/favicon.png" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automations for Wealth Management</title>
+  <link rel="icon" href="logo.png" type="image/png" />
+  <meta name="description" content="Done-for-you AI ops for independent RIAs. Workflows on your CRM, custodian, and reporting stack — SEC/FINRA-aware, human-approved, risk-free." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --paper: oklch(98% .004 95);
-      --ink: oklch(20% .018 70);
-      --muted: oklch(48% .012 70);
-      --rust: oklch(52% .10 28);
-      --rust-deep: oklch(43% .10 28);
-      --rust-wash: oklch(70% .065 28 / .19);
-      --cream-wash: oklch(100% .002 95 / .52);
-      --display: 'Iowan Old Style', 'Charter', Georgia, serif;
-      --body: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+      --paper: #f6f4ef;
+      --wash: #f1efe8;
+      --face: #ece9e1;
+      --ink: #1c1b19;
+      --mute: #6a6760;
+      --faint: #9a968d;
+      --line: rgba(28, 27, 25, .1);
+      --serif: "Instrument Serif", Georgia, serif;
+      --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      --nav: 64px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav); }
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      position: sticky; top: 0; z-index: 20;
+      height: var(--nav);
+      background: color-mix(in srgb, var(--paper) 86%, transparent);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 1120px;
+      height: var(--nav);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+    }
+    .logo {
+      display: inline-flex; align-items: center; gap: .5rem;
+      justify-self: start;
+      font-size: .72rem; font-weight: 600; letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .logo img {
+      width: 22px; height: 22px; object-fit: contain;
+      transform-origin: 50% 58%;
+      animation: orc-stir 12s ease-in-out infinite;
+    }
+    .logo:hover img { animation: orc-stir 1.4s ease-in-out; }
+    @keyframes orc-stir {
+      0%, 76%, 100% { transform: rotate(0deg) scale(1); }
+      81% { transform: rotate(-12deg) scale(1.06); }
+      86% { transform: rotate(10deg) scale(1.08); }
+      91% { transform: rotate(-4deg) scale(1.03); }
+      95% { transform: rotate(0deg) scale(1); }
+    }
+    .nav-links {
+      display: flex; gap: 1.75rem;
+      font-size: .82rem;
+      color: var(--mute);
+    }
+    .nav-links a:hover,
+    .nav-links a.is-active { color: var(--ink); }
+    .nav-cta {
+      justify-self: end;
+      font-size: .8rem; font-weight: 500;
+      padding: .42rem .95rem;
+      background: var(--ink); color: var(--paper);
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    .band { width: 100%; }
+    .inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 6.5rem 1.5rem;
+    }
+    .band-hero, .band-offer, .band-foot { background: var(--paper); }
+    .band-good, .band-roi, .band-value, .band-pricing { background: var(--wash); }
+    .band-why { background: var(--paper); }
+
+    .hero {
+      text-align: center;
+      padding: 5.5rem 1.5rem 3.5rem;
+      scroll-margin-top: var(--nav);
+    }
+    .eyebrow {
+      font-size: .78rem;
+      color: var(--mute);
+      letter-spacing: .04em;
+    }
+    h1 {
+      margin: 1.15rem auto 0;
+      font-family: var(--serif);
+      font-size: clamp(2.9rem, 6.5vw, 5.1rem);
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: 1.02;
+      max-width: 10em;
+    }
+    h1 em { font-style: italic; }
+    .hero-sub {
+      margin: 1.5rem auto 0;
+      max-width: 30em;
+      font-size: 1.08rem;
+      color: var(--mute);
+      line-height: 1.5;
+    }
+    .stack-line {
+      margin: 1.35rem auto 0;
+      max-width: 36em;
+      font-size: .72rem;
+      letter-spacing: .05em;
+      color: var(--faint);
+      line-height: 1.6;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; overflow-x: hidden; color: var(--ink); background: var(--paper); font-family: var(--body); -webkit-font-smoothing: antialiased; }
-    a { color: inherit; }
-    :focus-visible { outline: 3px solid var(--rust); outline-offset: 5px; }
-
-    .shell { width: min(1240px, calc(100% - 64px)); margin: 0 auto; }
-    .site-header { display: flex; min-height: 88px; align-items: center; justify-content: space-between; }
-    .wordmark { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-size: 21px; font-weight: 780; letter-spacing: -.05em; text-decoration: none; }
-    .brand-logo { width: 34px; height: 34px; object-fit: contain; }
-    .header-action { color: var(--ink); font-size: 14px; font-weight: 750; text-decoration: none; }
-    .header-action:hover { opacity: .58; }
-
-    .hero { display: grid; grid-template-columns: minmax(0, .91fr) minmax(520px, 1.09fr); gap: clamp(42px, 7vw, 112px); min-height: calc(100vh - 88px); align-items: center; padding: 42px 0 92px; }
-    .eyebrow, .kicker, .step-no { margin: 0; color: var(--muted); font: 700 11px/1.2 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
-    .eyebrow { margin-bottom: 23px; }
-    h1, h2, p { margin-top: 0; }
-    h1 { max-width: 650px; margin-bottom: 28px; font: 400 clamp(64px, 7.3vw, 110px)/.88 var(--display); letter-spacing: -.07em; }
-    .hero-copy { max-width: 545px; margin-bottom: 31px; color: var(--muted); font-size: 18px; line-height: 1.56; }
-    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 25px; }
-    .primary-button { display: inline-flex; min-height: 76px; align-items: center; justify-content: center; padding: 0 32px; color: var(--paper); background: var(--rust); font-size: 16px; font-weight: 780; text-align: center; text-decoration: none; transition: transform .2s ease, background .2s ease; }
-    .primary-button:hover { background: var(--rust-deep); transform: translateY(-2px); }
-    .secondary-link { display: inline-flex; align-items: center; gap: 9px; min-height: 48px; font-size: 14px; font-weight: 760; text-decoration: none; }
-    .secondary-link::after { content: '↗'; font-size: 19px; }
-    .secondary-link:hover { opacity: .58; }
-    .cta-proof { margin: 14px 0 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
-    .hero-visual { position: relative; min-height: 540px; isolation: isolate; }
-    .hero-visual::before { position: absolute; z-index: -2; top: 52%; left: 50%; width: min(410px, 100%); height: min(410px, 100%); border-radius: 50%; background: radial-gradient(circle, var(--rust-wash), transparent 69%); content: ''; transform: translate(-50%, -50%); }
-    .hero-visual::after { content: none; }
-    .visual-meta { display: flex; align-items: center; justify-content: space-between; margin: 2px 0 0; }
-    .visual-meta .kicker { color: var(--muted); }
-    .live { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font: 700 10px/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
-    .live::before { width: 7px; height: 7px; border-radius: 50%; background: var(--rust); content: ''; animation: blink 2.1s ease-in-out infinite; }
-    .signal-map { position: relative; display: grid; min-height: 482px; place-items: center; padding: 72px 0 54px; }
-    .trade-title { position: absolute; top: 19px; left: 50%; display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font: 700 10px/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; transform: translateX(-50%); white-space: nowrap; }
-    .trade-title svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.45; }
-    .clean-flow { display: grid; width: 100%; grid-template-columns: minmax(0, 1fr) 30px 172px 30px minmax(0, 1fr); gap: clamp(12px, 2.2vw, 28px); align-items: center; }
-    .flow-list { display: grid; gap: 22px; }
-    .flow-list--inputs { justify-items: end; }
-    .source, .endpoint { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
-    .source { color: var(--ink); font-size: 13px; font-weight: 740; }
-    .source svg { width: 21px; height: 21px; color: var(--muted); fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
-    .flow-arrow { color: var(--rust); font: 400 31px/1 var(--display); text-align: center; }
-    .core { position: relative; display: grid; width: 172px; place-items: center; text-align: center; }
-    .core::before { position: absolute; z-index: -1; width: 170px; height: 170px; border-radius: 50%; background: oklch(100% .002 95 / .76); content: ''; animation: breathe 5.8s ease-in-out infinite; }
-    .core::after { position: absolute; z-index: -2; width: 228px; height: 228px; border-radius: 50%; background: var(--rust-wash); content: ''; animation: breathe 7.4s ease-in-out infinite reverse; }
-    .core-logo { width: 82px; height: 82px; object-fit: contain; }
-    .core strong { display: block; margin-top: 10px; font-size: 14px; letter-spacing: -.035em; }
-    .core small { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.35; }
-    .endpoint { font-size: 13px; }
-    .endpoint span { width: 9px; height: 9px; flex: 0 0 auto; border-radius: 50%; background: var(--ink); }
-    .endpoint--booked span { background: var(--rust); }
-    .endpoint strong { display: block; font-size: 13px; letter-spacing: -.02em; }
-    .endpoint small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
-    .visual-caption { position: absolute; bottom: 10px; left: 50%; margin: 0; color: var(--muted); font: 700 10px/1.3 var(--mono); letter-spacing: .1em; text-align: center; text-transform: uppercase; transform: translateX(-50%); white-space: nowrap; }
-
-    .promise { margin-top: 8px; color: var(--paper); background: var(--ink); }
-    .promise-inner { display: grid; grid-template-columns: .96fr 1.04fr; gap: clamp(46px, 9vw, 150px); padding: 112px 0 120px; }
-    .promise h2 { max-width: 500px; margin: 17px 0 0; font: 400 clamp(45px, 5vw, 73px)/.91 var(--display); letter-spacing: -.065em; }
-    .promise h2 em { color: oklch(87% .038 47); font-style: italic; }
-    .promise .kicker { color: oklch(86% .02 85); }
-    .guarantee-copy { max-width: 505px; margin: 0 0 41px; color: oklch(88% .012 85); font-size: 18px; line-height: 1.55; }
-    .promise-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 4vw, 58px); align-items: start; }
-    .step-no { margin: 0; color: var(--rust); white-space: nowrap; }
-    .promise-item h3 { margin: 17px 0 0; color: var(--paper); font-size: 17px; letter-spacing: -.03em; }
-
-    @keyframes blink { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .25; transform: scale(.65); } }
-    @keyframes breathe { 0%, 100% { transform: scale(.92); opacity: .65; } 50% { transform: scale(1.07); opacity: 1; } }
-
-    @media (max-width: 970px) {
-      .shell { width: min(100% - 40px, 760px); }
-      .hero { grid-template-columns: 1fr; gap: 36px; min-height: 0; padding: 50px 0 84px; }
-      .hero-visual { min-height: 520px; max-width: 720px; width: 100%; margin: 0 auto; }
-      .promise-inner { grid-template-columns: 1fr; gap: 52px; padding: 78px 0 86px; }
+    section { scroll-margin-top: var(--nav); }
+    .sec-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
     }
-    @media (max-width: 620px) {
-      .shell { width: min(100% - 32px, 520px); }
-      .site-header { min-height: 72px; }
-      .header-action { font-size: 13px; }
-      .hero { padding-top: 42px; }
-      h1 { font-size: clamp(56px, 17vw, 77px); }
-      .hero-copy { font-size: 16px; }
-      .hero-actions { display: grid; gap: 10px; }
-      .primary-button { width: 100%; min-height: 72px; font-size: 15px; }
-      .secondary-link { min-height: 36px; justify-content: center; }
-      .cta-proof { text-align: center; }
-      .hero-visual { min-height: 650px; }
-      .signal-map { min-height: 606px; padding: 74px 0 56px; margin-top: 16px; }
-      .clean-flow { grid-template-columns: 1fr; gap: 13px; }
-      .flow-list { gap: 14px; }
-      .flow-list--inputs, .flow-list--outcomes { justify-items: center; }
-      .flow-arrow { transform: rotate(90deg); }
-      .source { gap: 7px; font-size: 11px; }
-      .source svg { width: 17px; height: 17px; }
-      .core { width: 126px; }
-      .core::before { width: 132px; height: 132px; }
-      .core::after { width: 184px; height: 184px; }
-      .core-logo { width: 64px; height: 64px; }
-      .core strong { margin-top: 7px; font-size: 12px; }
-      .core small { font-size: 10px; }
-      .endpoint { font-size: 11px; }
-      .endpoint strong { font-size: 11px; }
-      .endpoint small { font-size: 9px; }
-      .visual-caption { width: 100%; font-size: 9px; white-space: normal; }
-      .promise-grid { grid-template-columns: 1fr; gap: 34px; }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+      font-weight: 400;
+      letter-spacing: -.03em;
+      line-height: 1.08;
+    }
+    .lede {
+      margin: .85rem auto 0;
+      max-width: 32em;
+      font-size: 1.02rem;
+      color: var(--mute);
+      line-height: 1.5;
+    }
+
+    .band-value h2 {
+      max-width: 14.5em;
+      margin-inline: auto;
+    }
+
+    .guarantee {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.2vw, 2.35rem);
+      letter-spacing: -.025em;
+      line-height: 1.2;
+      text-align: center;
+      max-width: 18em;
+      margin: 0 auto;
+    }
+    .pluses {
+      margin-top: 3.25rem;
+      display: grid;
+      gap: 2.25rem 2rem;
+      text-align: center;
+    }
+    .pluses h3 {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 400;
+      letter-spacing: -.02em;
+    }
+    .pluses p {
+      margin-top: .45rem;
+      font-size: .95rem;
+      color: var(--mute);
+      line-height: 1.45;
+    }
+
+    .roi-grid {
+      display: grid;
+      gap: 1.25rem;
+      max-width: 52rem;
+      margin: 0 auto;
+    }
+    .roi-card {
+      background: var(--face);
+      border-radius: 16px;
+      padding: 1.75rem 1.6rem 1.5rem;
+      text-align: left;
+    }
+    .roi-card h3 {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+    .roi-num {
+      margin-top: .5rem;
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      letter-spacing: -.04em;
+      line-height: 1;
+    }
+    .roi-detail {
+      margin-top: .75rem;
+      font-size: .95rem;
+      color: var(--mute);
+      line-height: 1.5;
+    }
+    .roi-note {
+      margin: 2.25rem auto 0;
+      max-width: 36em;
+      text-align: center;
+      font-size: .92rem;
+      color: var(--mute);
+      line-height: 1.55;
+    }
+
+    .cards {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--face);
+      border-radius: 16px;
+      padding: 1.6rem 1.5rem 1.35rem;
+      text-align: left;
+    }
+    .card h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.55rem, 2vw, 1.85rem);
+      font-weight: 400;
+      letter-spacing: -.03em;
+      line-height: 1.15;
+    }
+    .card ul {
+      margin: 1rem 0 0;
+      padding-left: 1.05rem;
+      font-size: .88rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .card li + li { margin-top: .35rem; }
+
+    .eq {
+      margin: 0 auto 3.25rem;
+      text-align: center;
+      max-width: 22em;
+    }
+    .eq-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: center;
+      gap: .5rem .75rem;
+      font-family: var(--serif);
+      font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+      letter-spacing: -.02em;
+    }
+    .eq-row i {
+      font-style: italic;
+      color: var(--mute);
+      font-size: .85em;
+    }
+    .eq-line {
+      width: min(240px, 70%);
+      height: 1px;
+      background: var(--ink);
+      margin: .65rem auto;
+      opacity: .35;
+    }
+    .eq-grid {
+      display: grid;
+      gap: 2rem 1.75rem;
+      text-align: center;
+    }
+    .eq-grid h3 {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      letter-spacing: -.02em;
+    }
+    .eq-grid p {
+      margin-top: .45rem;
+      font-size: .9rem;
+      color: var(--mute);
+      line-height: 1.45;
+    }
+
+    .charts {
+      display: grid;
+      gap: 3.5rem 2.5rem;
+    }
+    .chart {
+      margin: 0;
+    }
+    .chart h3 {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 400;
+      letter-spacing: -.02em;
+      text-align: center;
+    }
+    .chart svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 1.25rem;
+    }
+    .chart-note {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: .88rem;
+      color: var(--mute);
+      max-width: 38em;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.75rem;
+      font-size: .82rem;
+      color: var(--mute);
+    }
+    .legend i {
+      display: inline-block;
+      width: .7rem;
+      height: .7rem;
+      border-radius: 2px;
+      margin-right: .4rem;
+      vertical-align: -1px;
+    }
+    .legend .hire { background: #c9c4b8; }
+    .legend .us { background: var(--ink); }
+
+    .price-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .price-card {
+      background: var(--face);
+      border-radius: 16px;
+      padding: 1.7rem 1.5rem 1.55rem;
+      text-align: left;
+    }
+    .price-on-us {
+      margin-top: 1.15rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid var(--line);
+    }
+    .price-on-us-label {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+    .price-on-us h4 {
+      margin-top: .35rem;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+    }
+    .price-on-us ul {
+      margin-top: .65rem;
+      padding-left: 1.05rem;
+      font-size: .88rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .price-on-us li + li { margin-top: .4rem; }
+    .price-name {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+    .price-num {
+      margin-top: .55rem;
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+      letter-spacing: -.04em;
+      line-height: .95;
+    }
+    .price-num small {
+      display: block;
+      margin-top: .4rem;
+      font-family: var(--sans);
+      font-size: .8rem;
+      letter-spacing: 0;
+      color: var(--mute);
+      font-weight: 400;
+    }
+    .price-card > ul {
+      margin-top: 1.15rem;
+      padding-left: 1.05rem;
+      font-size: .88rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .price-card > ul li + li { margin-top: .4rem; }
+    .packages-head {
+      margin: 3.5rem 0 1.5rem;
+      text-align: center;
+    }
+    .packages-head h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      font-weight: 400;
+      letter-spacing: -.03em;
+    }
+    .packages-head p {
+      margin-top: .5rem;
+      font-size: .95rem;
+      color: var(--mute);
+    }
+    .packages-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .package-badge {
+      display: inline-block;
+      margin-bottom: .65rem;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: color-mix(in srgb, var(--ink) 8%, var(--face));
+      padding: .28rem .55rem;
+      border-radius: 999px;
+    }
+    .seed {
+      margin: 2.75rem auto 0;
+      max-width: 40em;
+      text-align: center;
+      font-size: .95rem;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .why-price {
+      margin: 1.25rem auto 0;
+      max-width: 34em;
+      text-align: center;
+      font-size: .92rem;
+      color: var(--mute);
+      line-height: 1.55;
+    }
+    .slots {
+      margin-top: 1.1rem;
+      text-align: center;
+      font-size: .92rem;
+      color: var(--mute);
+    }
+
+    footer .inner {
+      padding: 2.5rem 1.5rem 3rem;
+      text-align: center;
+      font-size: .8rem;
+      color: var(--mute);
+      border-top: 1px solid var(--line);
+    }
+
+    @media (min-width: 640px) {
+      .pluses { grid-template-columns: repeat(2, 1fr); }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .roi-grid { grid-template-columns: 1fr 1fr; }
+      .eq-grid { grid-template-columns: 1fr 1fr; }
+      .price-grid { grid-template-columns: 1fr 1fr; }
+      .packages-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 760px) {
+      .charts { grid-template-columns: 1fr 1.15fr; align-items: start; }
+    }
+    @media (min-width: 980px) {
+      .pluses { grid-template-columns: repeat(4, 1fr); }
+      .eq-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media (max-width: 759px) {
+      .nav-inner { grid-template-columns: 1fr auto; }
+      .nav-links { display: none; }
+      .hero { padding: 4rem 1.25rem 2.5rem; }
+      .inner { padding: 4.25rem 1.25rem; }
+      h1 { max-width: none; }
+    }
+    @media (max-width: 420px) {
+      .nav-cta { padding: .4rem .7rem; font-size: .75rem; }
+      .logo { letter-spacing: .12em; font-size: .68rem; }
     }
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .logo img, .logo:hover img { animation: none; }
     }
   </style>
 </head>
 <body>
-  <header class="shell site-header">
-    <a class="wordmark" href="#top" aria-label="OrcBrain home"><img class="brand-logo" src="./assets/favicon.png" alt=""><span>OrcBrain</span></a>
-    <a class="header-action" href="https://calendly.com/luke-orcbrain/10-minute-consult">Try it free</a>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#intro" class="logo"><img src="logo.png" alt="" />OrcBrain</a>
+      <div class="nav-links">
+        <a href="#offer">Offer</a>
+        <a href="#roi">ROI</a>
+        <a href="#value">Value</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <a href="https://calendly.com/luke-orcbrain/10-minute-consult" class="nav-cta">Book a 10-min audit</a>
+    </div>
+  </nav>
+
+  <header class="band band-hero hero" id="intro">
+    <p class="eyebrow">Independent RIAs · $100M–$1B AUM</p>
+    <h1>A full hire’s capacity.<br><em>Without the hire.</em></h1>
+    <p class="hero-sub">Cut a $100k hire — or grow AUM with the team you already have. Ops capacity on your CRM and custodian stack, every output reviewed before it hits a client file.</p>
+    <p class="stack-line">Wealthbox · Redtail · Schwab · Fidelity · Orion · Black Diamond</p>
   </header>
 
-  <main id="top">
-    <section class="shell hero" aria-labelledby="hero-heading">
-      <div class="hero-copy-column">
-        <p class="eyebrow">For owner-led businesses</p>
-        <h1 id="hero-heading">All inquiries<br>handled for you.</h1>
-        <p class="hero-copy">Your calls and website leads get a useful next step, every time. OrcBrain qualifies, books, and hands off the moments your team should handle themselves.</p>
-        <div class="hero-actions">
-          <a class="primary-button" href="https://calendly.com/luke-orcbrain/10-minute-consult">Try Your Free Private Preview</a>
-          <a class="secondary-link" href="https://calendly.com/luke-orcbrain/10-minute-consult">I want this</a>
-        </div>
-        <p class="cta-proof">Built around your company from public information. No production access required.</p>
-      </div>
-
-      <div class="hero-visual" aria-label="Animated diagram showing inquiries entering the OrcBrain agent and routing to human handoff or a booked consult">
-        <div class="visual-meta"><p class="kicker">The OrcBrain intake engine</p><span class="live">Live routing</span></div>
-        <div class="signal-map">
-          <div class="trade-title"><span>Every inquiry, handled</span></div>
-          <div class="clean-flow">
-            <div class="flow-list flow-list--inputs">
-              <div class="source"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.7 9.2 3l1.9 4.8-1.8 1.4a15 15 0 0 0 5.5 5.5l1.4-1.8 4.8 1.9-.7 2.6c-.3 1.2-1.5 2-2.7 1.8C9.9 18 6 14.1 4.8 6.4c-.2-1.2.6-2.4 1.8-2.7Z"/></svg><span>Phone call</span></div>
-              <div class="source"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v11H9l-5 3v-14Z"/><path d="M8 10h8M8 13h5"/></svg><span>Website chat</span></div>
-              <div class="source"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17H6zM9 8h6M9 12h6M9 16h4"/></svg><span>Website form</span></div>
-            </div>
-            <span class="flow-arrow" aria-hidden="true">→</span>
-            <div class="core"><img class="core-logo" src="./assets/favicon.png" alt=""><strong>OrcBrain agent</strong><small>Qualifies · responds · routes</small></div>
-            <span class="flow-arrow" aria-hidden="true">→</span>
-            <div class="flow-list flow-list--outcomes">
-              <div class="endpoint"><span></span><div><strong>Human handoff</strong><small>When judgment is needed</small></div></div>
-              <div class="endpoint endpoint--booked"><span></span><div><strong>Booked consult</strong><small>With the right brief</small></div></div>
-            </div>
-          </div>
-          <p class="visual-caption">Calls + website inquiries → qualified next step</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="promise">
-      <div class="shell promise-inner">
-        <div><p class="kicker">The Happy Orc Guarantee</p><h2>Designed to be <em>the most risk-free purchase you make this year.</em></h2></div>
+  <section class="band band-good" id="good">
+    <div class="inner">
+      <p class="guarantee">If your ROI doesn’t outweigh our cost, we keep going.</p>
+      <div class="pluses">
         <div>
-          <p class="guarantee-copy">Use the installed system for 30 days. If it is not right for your team, we remove it and refund your implementation fee.</p>
-          <div class="promise-grid">
-            <article class="promise-item"><p class="step-no">01 / Preview</p><h3>See it working</h3></article>
-            <article class="promise-item"><p class="step-no">02 / Review</p><h3>Approve the flow</h3></article>
-            <article class="promise-item"><p class="step-no">03 / Keep it</p><h3>Keep it only if it fits</h3></article>
-          </div>
+          <h3>Risk-free</h3>
+          <p>Half to start. The rest when that ROI target hits — not on a calendar we can’t control.</p>
+        </div>
+        <div>
+          <h3>Human approval</h3>
+          <p>Nothing reaches a client, custodian, or compliance file without your sign-off.</p>
+        </div>
+        <div>
+          <h3>Always yours</h3>
+          <p>The workflow is yours — documented, portable, even if we part ways.</p>
+        </div>
+        <div>
+          <h3>Compliance &amp; security</h3>
+          <p>Audit trails on every run. Built for SEC/FINRA exams — PII stays in your systems.</p>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <section class="band band-offer" id="offer">
+    <div class="inner">
+      <div class="sec-head">
+        <h2>What we sell.</h2>
+        <p class="lede">We audit your ops workflow, pick the highest-cost bottleneck with you, and automate it first. Below are the kinds of work we cover — onboarding, meeting follow-up, review prep, exam files.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3>New-client files</h3>
+          <ul>
+            <li>KYC / CIP into the CRM</li>
+            <li>Schwab / Fidelity account-opening paperwork</li>
+            <li>IPS, ADV, and advisory agreements on the household</li>
+            <li>You approve before anything hits the custodian</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>After every meeting</h3>
+          <ul>
+            <li>Meeting notes &amp; suitability context in Wealthbox / Redtail</li>
+            <li>Draft follow-up email, unsent</li>
+            <li>Tasks routed to advisor or CSA</li>
+            <li>Books-and-records copy filed to the household</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Client packets</h3>
+          <ul>
+            <li>QBR and annual review decks</li>
+            <li>Performance pulled from Orion or Black Diamond</li>
+            <li>Assembled — not rebuilt in slides</li>
+            <li>You still send to the household</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Exam records</h3>
+          <ul>
+            <li>Stale IPS, missing Form CRS, or NIGO flagged</li>
+            <li>What the AI did — one pager for supervisory review</li>
+            <li>Evidence trail your CCO can pull for an exam</li>
+            <li>You still sign off</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-roi" id="roi">
+    <div class="inner">
+      <div class="sec-head">
+        <h2>Two ways it pays for itself.</h2>
+        <p class="lede">We model this in the audit with your meeting volume, fee schedule, and headcount plans. Every principal already tracks both levers.</p>
+      </div>
+      <div class="roi-grid">
+        <article class="roi-card">
+          <h3>Cut cost</h3>
+          <p class="roi-num">~$58k/yr</p>
+          <p class="roi-detail">A loaded CSA runs ~$100k. All four workflows, after setup, land around ~$42k/yr — same capacity, fraction of the headcount.</p>
+        </article>
+        <article class="roi-card">
+          <h3>Grow revenue</h3>
+          <p class="roi-num">~450 hrs/yr</p>
+          <p class="roi-detail">35 min saved × 15 client meetings/wk — advisor time back for prospects, or room for ~25 more households without a new hire.</p>
+        </article>
+      </div>
+      <p class="roi-note">The pilot proves one workflow against the ROI target we set in the deal. If the math doesn’t work on your firm, the audit will say so.</p>
+    </div>
+  </section>
+
+  <section class="band band-value" id="value">
+    <div class="inner">
+      <div class="sec-head">
+        <h2>You don’t pay unless your return<br>outweighs our cost.</h2>
+        <p class="lede">Before we start, we agree a dollar ROI target and write it into the deal — hours saved × your loaded cost, or households your team can take on. The second half is due when that target moves.</p>
+      </div>
+      <div class="eq" aria-hidden="true">
+        <div class="eq-row"><span>Outcome</span><i>×</i><span>Likelihood</span></div>
+        <div class="eq-line"></div>
+        <div class="eq-row"><span>Time</span><i>×</i><span>Effort</span></div>
+      </div>
+      <div class="eq-grid">
+        <div>
+          <h3>↑ Outcome</h3>
+          <p>Dollars, not dashboards — recovered ops cost or capacity for more AUM.</p>
+        </div>
+        <div>
+          <h3>↑ Likelihood</h3>
+          <p>Second half only when the agreed ROI target hits. If it doesn’t, we keep refining — free.</p>
+        </div>
+        <div>
+          <h3>↓ Time</h3>
+          <p>We don’t promise a go-live date — your IT and CCO set that pace. We absorb the slip; you don’t pay the balance until the ROI target in our deal is met.</p>
+        </div>
+        <div>
+          <h3>↓ Effort</h3>
+          <p>You grant access and approve outputs. We build, run, and document the rest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-why" id="why">
+    <div class="inner">
+      <div class="sec-head">
+        <h2>Cost side, in dollars.</h2>
+        <p class="lede">Same comparison principals run when they’re deciding whether to post a CSA job.</p>
+      </div>
+      <div class="charts">
+        <figure class="chart">
+          <h3>To start</h3>
+          <svg viewBox="0 0 320 220" role="img" aria-label="Upfront cost: CSA first quarter $25,000 versus $5,000 pilot">
+            <text x="78" y="18" text-anchor="middle" font-size="11" fill="#6a6760" font-family="Inter, sans-serif">CSA hire</text>
+            <text x="222" y="18" text-anchor="middle" font-size="11" fill="#6a6760" font-family="Inter, sans-serif">These workflows</text>
+            <rect x="48" y="48" width="60" height="140" fill="#c9c4b8" rx="4"/>
+            <rect x="192" y="160" width="60" height="28" fill="#1c1b19" rx="4"/>
+            <text x="78" y="42" text-anchor="middle" font-size="15" fill="#1c1b19" font-family="Instrument Serif, Georgia, serif">$25k</text>
+            <text x="222" y="154" text-anchor="middle" font-size="15" fill="#1c1b19" font-family="Instrument Serif, Georgia, serif">$5k</text>
+            <line x1="24" y1="192" x2="296" y2="192" stroke="rgba(28,27,25,.12)"/>
+            <text x="78" y="212" text-anchor="middle" font-size="10" fill="#9a968d" font-family="Inter, sans-serif">First quarter</text>
+            <text x="222" y="212" text-anchor="middle" font-size="10" fill="#9a968d" font-family="Inter, sans-serif">Pilot</text>
+          </svg>
+        </figure>
+        <figure class="chart">
+          <h3>Over three years</h3>
+          <svg viewBox="0 0 400 220" role="img" aria-label="Cumulative cost over three years: CSA $100k, $200k, $300k versus $60k, $102k, $144k">
+            <line x1="48" y1="28" x2="48" y2="176" stroke="rgba(28,27,25,.1)"/>
+            <line x1="48" y1="176" x2="380" y2="176" stroke="rgba(28,27,25,.1)"/>
+            <text x="40" y="32" text-anchor="end" font-size="10" fill="#9a968d" font-family="Inter, sans-serif">$300k</text>
+            <text x="40" y="104" text-anchor="end" font-size="10" fill="#9a968d" font-family="Inter, sans-serif">$150k</text>
+            <text x="40" y="180" text-anchor="end" font-size="10" fill="#9a968d" font-family="Inter, sans-serif">$0</text>
+            <polyline fill="none" stroke="#c9c4b8" stroke-width="2.5" points="90,126 210,76 330,26"/>
+            <circle cx="90" cy="126" r="4.5" fill="#c9c4b8"/>
+            <circle cx="210" cy="76" r="4.5" fill="#c9c4b8"/>
+            <circle cx="330" cy="26" r="4.5" fill="#c9c4b8"/>
+            <text x="338" y="22" font-size="12" fill="#6a6760" font-family="Instrument Serif, Georgia, serif">$300k</text>
+            <polyline fill="none" stroke="#1c1b19" stroke-width="2.5" points="90,146 210,125 330,104"/>
+            <circle cx="90" cy="146" r="4.5" fill="#1c1b19"/>
+            <circle cx="210" cy="125" r="4.5" fill="#1c1b19"/>
+            <circle cx="330" cy="104" r="4.5" fill="#1c1b19"/>
+            <text x="338" y="108" font-size="12" fill="#1c1b19" font-family="Instrument Serif, Georgia, serif">$144k</text>
+            <text x="90" y="198" text-anchor="middle" font-size="11" fill="#6a6760" font-family="Inter, sans-serif">Year 1</text>
+            <text x="210" y="198" text-anchor="middle" font-size="11" fill="#6a6760" font-family="Inter, sans-serif">Year 2</text>
+            <text x="330" y="198" text-anchor="middle" font-size="11" fill="#6a6760" font-family="Inter, sans-serif">Year 3</text>
+          </svg>
+        </figure>
+      </div>
+      <div class="legend">
+        <span><i class="hire"></i>CSA hire</span>
+        <span><i class="us"></i>These workflows</span>
+      </div>
+      <p class="chart-note">Loaded CSA or client-service hire at ~$100k/yr. Us at a mid quote: $5k pilot, ~$20k to install, then $3.5k/mo. Year one is about $60k; years two and three are the monthly only.</p>
+    </div>
+  </section>
+
+  <section class="band band-pricing" id="pricing">
+    <div class="inner">
+      <div class="sec-head">
+        <h2>Then the number.</h2>
+        <p class="lede">Audit first. Pilot second. Then pick how much capacity you want.</p>
+      </div>
+      <div class="price-grid">
+        <article class="price-card">
+          <div class="price-name">Audit</div>
+          <div class="price-num">Free<small>10 minutes</small></div>
+          <ul>
+            <li>Where onboarding or meeting follow-up actually stalls</li>
+            <li>Written ops note you can share with your CCO</li>
+            <li>No pitch unless you ask</li>
+          </ul>
+          <div class="price-on-us">
+            <p class="price-on-us-label">On us</p>
+            <h4>No catch.</h4>
+            <ul>
+              <li>No software to learn or install</li>
+              <li>You get the written note either way</li>
+              <li>We only pitch if you ask</li>
+            </ul>
+          </div>
+        </article>
+        <article class="price-card">
+          <div class="price-name">Pilot</div>
+          <div class="price-num">$5,000<small>one workflow · outcome-gated</small></div>
+          <ul>
+            <li>Usually CRM notes, follow-up, and tasks after each client meeting</li>
+            <li>$2,500 to start, $2,500 when the agreed ROI target hits</li>
+            <li>Access or compliance running slow? We wait — no extra billing until that target is met</li>
+            <li>You keep the workflow either way</li>
+          </ul>
+          <div class="price-on-us">
+            <p class="price-on-us-label">On us — not you</p>
+            <h4>Every model and runtime bill.</h4>
+            <ul>
+              <li>Model, cloud, and runtime — included in the pilot</li>
+              <li>We pick the models and pay for them</li>
+              <li>No usage invoice. No token bill.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="packages-head">
+        <h3>After the pilot.</h3>
+        <p>Both include all model, cloud, and runtime costs — no token bill.</p>
+      </div>
+      <div class="packages-grid">
+        <article class="price-card">
+          <div class="price-name">White-glove</div>
+          <div class="price-num">~$45k<small>setup · from $6.5k/mo</small></div>
+          <ul>
+            <li>Everything in System, plus custom workflows beyond the four</li>
+            <li>90-day optimization, team training, and compliance documentation</li>
+            <li>Playbooks, SOPs, and quarterly new-workflow additions</li>
+            <li>Priority support and a dedicated monthly refinement call</li>
+          </ul>
+          <div class="price-on-us">
+            <p class="price-on-us-label">On us — not you</p>
+            <h4>Full stack, fully run.</h4>
+            <ul>
+              <li>AI, cloud, and runtime — all in the monthly</li>
+              <li>We will never pass through model or vendor bills</li>
+            </ul>
+          </div>
+        </article>
+        <article class="price-card">
+          <span class="package-badge">Most firms start here</span>
+          <div class="price-name">System</div>
+          <div class="price-num">~$20k<small>setup · from $3.5k/mo</small></div>
+          <ul>
+            <li>All four workflows — onboarding, meetings, packets, exam records</li>
+            <li>Setup locked after the pilot — not a range that moves</li>
+            <li>Monthly quoted upfront; your CRM and custodian seats stay yours</li>
+          </ul>
+          <div class="price-on-us">
+            <p class="price-on-us-label">On us — not you</p>
+            <h4>AI, cloud, and the running of it.</h4>
+            <ul>
+              <li>All in the monthly — not a line item you reconcile</li>
+              <li>No $100k OpenAI surprise six months in</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <p class="seed">We may not be the lowest quote — and that’s because the low ones add model, cloud, vendor bills, and a million other fees. They have you pay for the most expensive AI models and quote you less upfront; six months later you’re staring at a $100,000 token bill from OpenAI. We will never do that.</p>
+      <p class="why-price">If you were about to hire a CSA or paraplanner, this is the cheaper proof. If you weren’t, $5k is the wrong spend — and the audit will say so.</p>
+      <p class="slots">Two pilots at a time.</p>
+    </div>
+  </section>
+
+  <footer class="band band-foot">
+    <div class="inner">
+      <p><a href="mailto:luke@orcbrain.com">luke@orcbrain.com</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const links = [...document.querySelectorAll(".nav-links a")];
+    const ids = ["intro", "good", "offer", "roi", "value", "why", "pricing"];
+
+    const setActive = (id) => {
+      links.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === "#" + id));
+    };
+
+    const spy = () => {
+      const marker = 88;
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= marker) current = id;
+      }
+      setActive(current);
+    };
+
+    window.addEventListener("scroll", spy, { passive: true });
+    window.addEventListener("resize", spy);
+    spy();
+  </script>
 </body>
 </html>
